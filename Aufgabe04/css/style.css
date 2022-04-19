@@ -1,0 +1,84 @@
+
+header {
+        min-height: 400px;
+        max-height: 400px;
+        margin:-20px;
+        border:none;
+        background-image: url("../assets/animation/showDusche.png");
+        background-position:center;
+        background-repeat: none;  
+        background-size: cover; 
+        background-origin: border-box;
+     
+}
+.logo{
+    float:left;
+    margin-top:50px;
+    width: 100px;
+}
+.icon-discord{
+    width: 50px;
+    margin: 5px;
+}
+body {
+    background-color:rgb(211, 211, 211);
+    margin:none;
+    
+}
+.mainContainer {
+    max-width: 800px;
+    margin: auto;
+    text-align:left;
+}
+a {
+    text-decoration: none;
+}
+nav ul {
+    list-style-type: none;
+    margin: none;
+    position: relative;
+    top:50px;
+    left:460px;
+  }
+nav ul li {
+    float: left;
+  }
+.currentLink {
+    color:#ffffff;
+    text-decoration: underline;
+}
+nav ul li a {
+    display: block;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 8px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+li a:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+  }
+footer {
+        background-color:rgb(234, 234, 234);
+        min-height: 100px;
+}
+.grid-container {
+    display: grid;
+    justify content: space-evenly;
+    grid-template-areas: 'kontakt socialmedia impressum';
+
+}
+.griditem1 {
+    grid-area: kontakt;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    font-weight: bold;
+}
+.griditem2 {
+    grid-area: socialmedia;
+}
+.griditem3 {
+    grid-area: impressum;
+}
