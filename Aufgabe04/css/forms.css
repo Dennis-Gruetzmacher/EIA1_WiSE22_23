@@ -1,0 +1,43 @@
+*{
+    margin:0;
+    padding:0;
+}
+form{
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+input[type=text] {
+    width: 500px;
+    font-size:16px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color:grey;
+    color: white;
+    outline:none;
+  }
+  textarea{
+      width: 460px;
+      font-size:16px;
+      padding: 12px 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: grey;
+      color: white;
+      resize: none;
+      text-align: left;
+      outline:none;
+  }
+  input[type=submit] {
+    background-color: grey;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  #input-message{
+      height:200px;
+  }
