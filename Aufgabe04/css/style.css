@@ -12,12 +12,11 @@ header {
      
 }
 .logo{
-    float:left;
     margin-top:50px;
     width: 100px;
 }
 .icon-discord{
-    width: 50px;
+    width: 40px;
     margin: 5px;
 }
 body {
@@ -33,21 +32,15 @@ body {
 a {
     text-decoration: none;
 }
-nav ul {
+.topnav ul {
     list-style-type: none;
-    margin: none;
-    position: relative;
-    top:50px;
-    left:460px;
+    margin-top: 50px;
   }
-nav ul li {
+.topnav ul li {
     float: left;
   }
-.currentLink {
-    color:#ffffff;
-    text-decoration: underline;
-}
-nav ul li a {
+
+.topnav ul li a {
     display: block;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
@@ -56,29 +49,50 @@ nav ul li a {
     color: rgb(0, 0, 0);
     text-decoration: none;
   }
-li a:hover {
+.topnav ul li a:hover {
     color: rgb(255, 255, 255);
     text-decoration: underline;
   }
+  .topnav ul li a.current-site {
+    color:#ffffff;
+    text-decoration: underline;
+}
 footer {
         background-color:rgb(234, 234, 234);
         min-height: 100px;
 }
-.grid-container {
+/*Raster für Header*/
+.grid-header {
     display: grid;
-    justify content: space-evenly;
-    grid-template-areas: 'kontakt socialmedia impressum';
+    grid-template-columns: 100px auto 400px;
+    grid-template-rows: 100px;
+    grid-template-areas: 'logo . navigation';
+}
+.grid-header-item1{
+    grid-area: logo;
+    justify-content:center;
 
 }
-.griditem1 {
-    grid-area: kontakt;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 12px;
-    font-weight: bold;
+.grid-header-item2{
+    grid-area: navigation;
 }
-.griditem2 {
+/*Raster für Footer*/
+.grid-footer {
+    display: grid;
+    grid-template-columns: 200px auto 300px;
+    grid-template-rows: 200px;
+    grid-template-areas: 'kontakt socialmedia impressum';
+    font-family: Arial, Helvetica, sans-serif;
+    color:rgb(68, 68, 68);
+    font-weight: bold;
+    font-size:medium;
+}
+.grid-footer-item1 {
+    grid-area: kontakt;
+}
+.grid-footer-item2 {
     grid-area: socialmedia;
 }
-.griditem3 {
+.grid-footer-item3 {
     grid-area: impressum;
 }
