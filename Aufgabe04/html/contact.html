@@ -4,14 +4,15 @@
 <meta charset="utf-8" />
 <title>Kontakt</title>
 <link rel="stylesheet" href="..\css\style.css">
-<link rel="stylesheet" href="..\css\forms.css">
 </head>
 <body>
     <header>
         <div class="mainContainer">
             <div class="grid-header">
                 <div class="grid-header-item1">
-                    <img id ="logo" src="../assets/icons/EIA1-logo-black.png">
+                    <a href="..\html\portfolio.html">
+                        <img id="logo" src="../assets/icons/EIA1-logo-black.png">
+                    </a>
                 </div>
                 <div class = "grid-header-item2">
                     <nav class="topnav">
@@ -20,10 +21,10 @@
                                 <a href="portfolio.html">Portfolio</a>
                             </li>
                             <li>
-                                <a href="contact.html" class="current-site">Kontakt</a>
+                                <a href="aboutme.html">About</a>
                             </li>
                             <li>
-                                <a href="aboutme.html">Über mich</a>
+                                <a href="contact.html" class="current-site">Contact</a>
                             </li>
                         </ul>
                     </nav>
@@ -46,15 +47,13 @@
     Germany
     </h4>
     <br>
-    <h4>Ideen, Vorschläge, Kritik oder einfach Langeweile? Schreiben sie mir eine Nachricht.</h4>
+    <h4>Ideas, suggestions, criticism or simply bored? Send me a line: </h4>
     <form>
         <input type="text" id="input-name" name="input-name" placeholder="Your name">
         <br>
         <input type="text" id="input-e-mail" name="lname" placeholder="Your e-mail">
         <br>
-        <textarea id="input-message" name="input-message" rows="5" placeholder="Your message">
-    
-        </textarea>
+        <textarea id="input-message" name="input-message" placeholder="Your message"></textarea>
         <br>
         <input type="submit" value="Send">
       </form> 
