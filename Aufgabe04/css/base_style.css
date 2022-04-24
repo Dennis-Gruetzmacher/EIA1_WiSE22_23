@@ -130,7 +130,7 @@ Raster Header Feld 3 - Navigation*/
 .grid-footer {
     display: grid;
     grid-template-columns:auto auto auto;
-    grid-template-rows: 75px 40px;
+    grid-template-rows: 75px auto;
     grid-template-areas: 'kontakt socialmedia copyright' '. backtotop .';
     row-gap: 5px;
     color:rgb(121, 121, 121);
