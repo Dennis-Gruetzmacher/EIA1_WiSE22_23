@@ -1,12 +1,17 @@
+/*Diese CSS DAtei wird in base_style.css importiert*/
+/**********Setup*************/
+/*Reset aller paddings and margins*/
 *{
     margin:0;
     padding:0;
 }
+/*Grundlagen des form elements*/
 form{
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
+/*Txteingabefeld*/
 input[type=text] {
     width: 500px;
     font-size:16px;
@@ -17,8 +22,10 @@ input[type=text] {
     color: white;
     outline:none;
   }
+  /*Mehrzeiliges TExteingabefeld*/
   textarea{
       width: 460px;
+      height: 200px;
       font-size:16px;
       padding: 12px 20px;
       font-family: Arial, Helvetica, sans-serif;
@@ -28,6 +35,7 @@ input[type=text] {
       text-align: left;
       outline:none;
   }
+  /*Button "Send"*/
   input[type=submit] {
     background-color: grey;
     border: none;
@@ -37,7 +45,4 @@ input[type=text] {
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
-  }
-  #input-message{
-      height:200px;
   }

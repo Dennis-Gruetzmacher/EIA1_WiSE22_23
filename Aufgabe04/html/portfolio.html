@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<title>Portfolio</title>
-<link rel="stylesheet" href="..\css\style.css">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\css\base_style.css">
+    <title>Portfolio</title>
 </head>
 <body>
-    <header>
-    <div class="mainContainer">
+    <header id="site_top"> <!--ID für Sprung zum Top der Website-->
+    <div class="mainContainer"><!--Container 800px-->
         <div class="grid-header">
             <div class="grid-header-item1">
-                <a href="..\html\portfolio.html">
-                    <img id="logo" src="../assets/icons/EIA1-logo-black.png">
+                <a href="../../Steckbrief/steckbrief.html">
+                    <img id="logo" src="../assets/icons/logo_EIA1_black.png">
                 </a>
             </div>
             <div class = "grid-header-item2">
@@ -33,14 +33,13 @@
     </div>
     </header>
     <main>
-    <div class="mainContainer">
-       
-       <div class="maintextleft">
-           <h1>Musterwohnung BEATE </h1>
-        <p><h4>Modelierung einer kompletten Beispiel- und Vorführwohnung aus dem Bereich behinderten- und altersgerechtes Wohnen.</h4>        
-        </p>
-        <h3>Präsentation</h3>
-       </div>
+    <div class="mainContainer"><!--Container 800px-->
+        <div class="maintextleft"><!--Haupttext Ausrichtung links-->
+            <h1 class ="liner big">Musterwohnung BEATE </h1><!--Überschrift + dotted line-->
+            <h4>Modelierung einer kompletten Beispiel- und Vorführwohnung aus dem Bereich behinderten- und altersgerechtes Wohnen.</h4>       
+            <h3 class ="liner small">Präsentation</h3><!--Überschrift + dotted line-->
+        </div>
+        <!--Bilder und Videos sind zentral ausgerichtet-->
         <a href="..\assets\animation\showLesegerät.png" target="_blank">
             <img src="..\assets\animation\thumbnails\thumb_showLesegerät.png">
         </a>
@@ -64,8 +63,8 @@
         <a href="..\assets\animation\showGehfrei.png" target="_blank">
             <img src="..\assets\animation\thumbnails\thumb_showGehfrei.png">
         </a>
-        <div class="maintextleft">
-        <h3>Szenenbilder und Einzelobjekte</h3>
+        <div class="maintextleft"><!--Haupttext Ausrichtung links-->
+            <h3 class ="liner small">Szenenbilder und Einzelobjekte</h3><!--Überschrift + dotted line-->
         </div>
         <a href="..\assets\animation\Betten.jpg" target="_blank">
             <img src="..\assets\animation\thumbnails\thumb_Betten.jpg">
@@ -91,9 +90,9 @@
         <a href="..\assets\animation\Rollator.jpg" target="_blank">
             <img src="..\assets\animation\thumbnails\thumb_Rollator.jpg">
         </a>
-        <div class="maintextleft">
-        <h1>Karten</h1>
-        <h4>Karten für verschiedene Spiele im Bereich Pen&Paper</h4>
+        <div class="maintextleft"><!--Haupttext Ausrichtung links-->
+            <h1 class ="liner big">Karten</h1><!--Überschrift + dotted line-->
+            <h4>Karten für verschiedene Spiele im Bereich Pen&Paper</h4>
         </div>
         <a href="..\assets\maps\Arcus Iota Sektor SL Markierungen.jpg" target="_blank">
             <img src="..\assets\maps\thumbnails\thumb_Arcus Iota Sektor SL Markierungen.jpg">
@@ -107,20 +106,20 @@
         <a href="..\assets\maps\RillmertMound.png" target="_blank">
             <img src="..\assets\maps\thumbnails\thumb_RillmertMound.png">
         </a>
-        <div class="maintextleft">
-        <h1>Video</h1>
-        <h4>Wortloses 8-Sekunden Vorstellungsvideo als Aufgabe im Fach Grundlagen der Medienkonzeption</h4>
+        <div class="maintextleft"><!--Haupttext Ausrichtung links-->
+            <h1 class ="liner big">Video</h1><!--Überschrift + dotted line-->
+            <h4>Wortloses 8-Sekunden Vorstellungsvideo als Aufgabe im Fach Grundlagen der Medienkonzeption</h4>
         </div>
         <video height="300" controls>
             <source src="..\assets\video\DennisGrützmacher_BewegtesSelfie.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-          </video> 
+            Your browser does not support the video tag.
+        </video> 
     </div>
     </main>
     <footer>
-    <div class="mainContainer">
-        <div class="grid-footer">
-            <div class="grid-footer-item1">
+    <div class="mainContainer"><!--Container 800px-->
+        <div class="grid-footer"><!--Raster für Footer-->
+            <div class="grid-footer-item1"><!--Adressdaten-->
                     Dennis Grützmacher
                     <br>
                     Friedrichstr. 6
@@ -129,19 +128,29 @@
                     <br>
                     Villingen - Schwenningen
             </div>
-            <div class="grid-footer-item2">
+            <div class="grid-footer-item2"><!--Kontaktmöglichkeiten-->
                     Get in touch with me
                     <br>
+                    <a href="mailto: dennis.gruetzmacher@hs-furtwangen.de" target="_blank">
+                        <img id=icon-contact src="../assets/icons/icon_mail.png">
+                    </a>
                     <a href="https://www.discordapp.com/users/506223433156395018" target="_blank">
-                        <img id=icon-discord src="../assets/icons/discord.png">
+                        <img id=icon-contact src="../assets/icons/icon_discord.png">
                     </a>
             </div>
-            <div class="grid-footer-item3">
+            <div class="grid-footer-item3"><!--Impressum-->
                 Copyright &copy; 2022
                 <br>
                 Dennis Grützmacher
                 <br>
                 All rights reserved
+            </div>
+            <div class="grid-footer-item4"><!--Sprung zurück zum top-->
+                <a href="#site_top">
+                    <img id=icon-contact src="../assets/icons/icon_arrow_up.png">
+                </a>
+                <br>
+                Back to top
             </div>
         </div>
     </div>

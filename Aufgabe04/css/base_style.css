@@ -1,0 +1,168 @@
+/*****************imports********************/
+/*importiert die CSS Datai für die Formulare in diese CSS Datei*/
+/*Importiere der CSS Datei für die Texteingabefelder auf contact.html*/
+@import url("forms.css");
+/***********Resets*****************/
+/*Margin und Padding ALLER Elemente auf 0 setzen*/
+*{
+    margin:0;
+    padding:0;
+}
+/****************Grundlegende Elemente definieren*******************/
+body {
+    background-color:rgb(255, 255, 255); 
+    font-family:Arial, Helvetica, sans-serif;
+    color:rgb(75, 75, 75);
+    font-weight: bold; 
+}
+header {
+    height: 400px;
+    max-height: 400px;
+    background-image: url("../assets/animation/showDusche.png");
+    background-position:center;
+    background-repeat: none;  
+    background-size: cover; 
+    background-origin: border-box; 
+}
+footer {
+    background-color:rgb(234, 234, 234);
+}
+
+ul{
+    list-style-type: none;
+}
+a {
+    font-weight:bolder;
+    color:rgb(125, 125, 125);
+    text-decoration: none;
+}
+h1, h2, h3,h4 {
+    padding-bottom:10px;
+}
+
+/*******************Klassen********************/
+/*Container für Content Breite 800px*/
+.mainContainer {
+    max-width: 800px;
+    margin: auto;
+    text-align:center;
+}
+/*Normaler Text orientierung links*/
+.maintextleft {
+    text-align:left;   
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/*Trennlinien welche nach dem Text starten*/
+.liner {
+    display: flex;
+    align-items: flex-start;
+}  
+/*Pseudoelement after --> hängt alles als child an übergeordnete Klasse (.liner) an*/
+.liner::after {
+      content: '';
+      flex-grow: 1;
+      height: 0px;
+      min-width: 20px;
+      margin: auto;
+      margin-left: 10px;
+    }   
+/*Unterklasse für Trennlinie 5px*/
+.liner.big::after {
+    border-top: 5px dotted rgb(75, 75, 75);
+    }
+/*Unterklasse für Trennlinie 3px*/    
+.liner.small::after {
+     border-top: 3px dotted rgb(75, 75, 75);
+    }  
+/*Klasse für Effekte von normalen Textlinks: visited und hover*/
+.link a:visited {
+    color:rgb(50, 50, 50);
+}
+.link a:hover{
+    text-shadow: 2px 2px 5px rgb(50, 50, 50);
+}
+/*Klasse für das Navigationsmenü*/
+/*Unordered List in .topnav*/
+.topnav ul {
+    margin-top: 50px;
+  }
+/*Listenelemente in .topnav*/
+.topnav li {
+    float: left;
+  }
+ /*anchors in .topnav*/ 
+.topnav a {
+    display: block;
+    font-size: 24px;
+    padding: 8px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+  /*Effekt für Hover für anchors in .topnav*/
+.topnav a:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+  }
+  /*Unterklasse für die aktuelle seite*/
+  .topnav a.current-site {
+    color:#ffffff;
+    text-decoration: underline;
+}
+/*Raster für Header*/
+.grid-header {
+    display: grid;
+    grid-template-columns: 100px auto 400px;
+    grid-template-rows: 100px;
+    grid-template-areas: 'logo . navigation';
+}
+/*Raster Header Feld 1 - Logo*/
+.grid-header-item1{
+    grid-area: logo;
+    justify-content:center;
+}
+/*Raster header feld 2 ist leer und unbenannt
+Raster Header Feld 3 - Navigation*/
+.grid-header-item2{
+    grid-area: navigation;
+}
+/*Raster für Footer*/
+.grid-footer {
+    display: grid;
+    grid-template-columns:auto auto auto;
+    grid-template-rows: 75px 40px;
+    grid-template-areas: 'kontakt socialmedia copyright' '. backtotop .';
+    row-gap: 5px;
+    color:rgb(121, 121, 121);
+    font-weight: bold;
+    font-size:medium;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.grid-footer-item1 {
+    grid-area: kontakt;
+    text-align: left;
+}
+.grid-footer-item2 {
+    grid-area: socialmedia;
+    text-align: center;
+}
+.grid-footer-item3 {
+    grid-area: copyright;
+    text-align: right;
+}
+.grid-footer-item4 {
+    grid-area: backtotop;
+    text-align: center;
+}
+/*IDs*/
+/*EIA1-Logo*/
+#logo{
+    margin-top:50px;
+    width: 100px;
+}
+/*Icons in den Kontakten*/
+#icon-contact{
+    width: 40px;
+    margin: 5px;
+}

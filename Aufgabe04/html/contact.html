@@ -2,16 +2,16 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Kontakt</title>
-<link rel="stylesheet" href="..\css\style.css">
+<link rel="stylesheet" href="..\css\base_style.css">
+<title>Contact</title>
 </head>
 <body>
-    <header>
+    <header id="site_top">
         <div class="mainContainer">
             <div class="grid-header">
                 <div class="grid-header-item1">
-                    <a href="..\html\portfolio.html">
-                        <img id="logo" src="../assets/icons/EIA1-logo-black.png">
+                    <a href="../../Steckbrief/steckbrief.html">
+                        <img id="logo" src="../assets/icons/logo_EIA1_black.png">
                     </a>
                 </div>
                 <div class = "grid-header-item2">
@@ -33,32 +33,32 @@
         </div>
         </header>	
 <main>
-<div class="mainContainer">
-	<div class="maintextleft">
-    <h2>Contact</h2>
-    <br>
-    <h4>Dennis Grützmacher
-    <br>
-    Friedrichstr. 6
-    <br>
-    78050
-    <br>
-    Villingen - Schwenningen
-    <br>
-    Germany
-    </h4>
-    <br>
-    <h4>Ideas, suggestions, criticism or simply bored? Send me a line: </h4>
-    <form>
-        <input type="text" id="input-name" name="input-name" placeholder="Your name">
-        <br>
-        <input type="text" id="input-e-mail" name="lname" placeholder="Your e-mail">
-        <br>
-        <textarea id="input-message" name="input-message" placeholder="Your message"></textarea>
-        <br>
-        <input type="submit" value="Send">
-      </form> 
-    </div>
+    <div class="mainContainer">
+        <div class="maintextleft">
+            <h2>Contact</h2>
+            <br>
+            <h4>Dennis Grützmacher
+            <br>
+            Friedrichstr. 6
+            <br>
+            78050
+            <br>
+            Villingen - Schwenningen
+            <br>
+            Germany
+            </h4>
+            <br>
+            <h4>Ideas, suggestions, criticism or simply bored? Send me a line: </h4>
+            <form>
+                <input type="text" id="input-name" name="input-name" placeholder="Your name">
+                <br>
+                <input type="text" id="input-mail" name="input-mail" placeholder="Your e-mail">
+                <br>
+                <textarea id="input-message" name="input-message" placeholder="Your message"></textarea>
+                <br>
+                <input type="submit" value="Send">
+            </form> 
+        </div>
 </div>
 </main>
 <footer>
@@ -76,8 +76,11 @@
             <div class="grid-footer-item2">
                     Get in touch with me
                     <br>
+                    <a href="mailto: dennis.gruetzmacher@hs-furtwangen.de" target="_blank">
+                        <img id=icon-contact src="../assets/icons/icon_mail.png">
+                    </a>
                     <a href="https://www.discordapp.com/users/506223433156395018" target="_blank">
-                        <img id="icon-discord" src="../assets/icons/discord.png">
+                        <img id=icon-contact src="../assets/icons/icon_discord.png">
                     </a>
             </div>
             <div class="grid-footer-item3">
@@ -87,8 +90,15 @@
                 <br>
                 All rights reserved
             </div>
+            <div class="grid-footer-item4">
+                <a href="#site_top">
+                    <img id=icon-contact src="../assets/icons/icon_arrow_up.png">
+                </a>
+                <br>
+                Back to top
+            </div>
         </div>
     </div>
-    </footer>
+</footer>
 </body>
 </html>
