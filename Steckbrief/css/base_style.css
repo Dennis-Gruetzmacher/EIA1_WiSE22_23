@@ -11,11 +11,15 @@ body {
     font-family:Arial, Helvetica, sans-serif;
     color:rgb(75, 75, 75);
     font-weight: bold; 
+    font-size:larger;
 }
 a {
     font-weight:bolder;
     color:rgb(125, 125, 125);
     text-decoration: none;
+}
+ul{
+    list-style-type: none;
 }
 /*******************Klassen********************/
 .maintextleft {
@@ -24,10 +28,9 @@ a {
     margin-bottom: 20px;
 }
 /*Klasse für Effekte von normalen Textlinks: visited und hover*/
-a:visited {
+.link a:visited {
     color:rgb(50, 50, 50);
 }
-a:hover{
+.link a:hover{
     text-shadow: 2px 2px 5px rgb(50, 50, 50);
 }
-/*Klasse für das Navigationsmenü*/
