@@ -21,7 +21,7 @@
     top:0;
     left:0;
     z-index: 1;
-    animation: fade 18s infinite;
+    animation: fade 9s infinite;
   }
   /*Basis Hero image das nicht faded*/
   .hero-img-base {
@@ -38,19 +38,19 @@
     animation-delay: 0s;
   }
   #hero-1 {
-    animation-delay: 3s;
+    animation-delay: 1.5s;
   }
   #hero-2 {
-    animation-delay: 6s;
+    animation-delay: 3s;
   }
   #hero-3 {
-    animation-delay: 9s;
+    animation-delay: 4.5s;
   }
   #hero-4 {
-    animation-delay: 12s;
+    animation-delay: 6s;
   }
   #hero-5 {
-    animation-delay: 15s;
+    animation-delay: 7.5s;
   }
 /*Animation daten für fade*/
   @keyframes fade {

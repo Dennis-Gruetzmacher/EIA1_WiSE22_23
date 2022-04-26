@@ -34,9 +34,9 @@ a {
 h1, h2, h3,h4 {
     padding-bottom:10px;
 }
-main div{
+/*main div{
     display:inherit;
-}
+}*/
 
 /*******************Klassen********************/
 /*Container für Content Breite 800px*/
@@ -82,7 +82,6 @@ main div{
 }
 /*Sticky banner welches mit wandert*/
 .sticky-banner {
-    position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
     float:right;
@@ -124,14 +123,10 @@ main div{
     text-decoration: underline;
 }
 /*Zoom object on hover*/
-  .imagelist3:hover img:not(:hover) {
-      opacity: 0.75;
-  }
-  img:hover{
-      opacity:1;
-  }
-  .zoom:hover {
-    transition: transform .2s; /* animation transformiert bild, Dauer: 0,2s */
+.zoom {
+    transition: transform .2s; /* animation transformiert bild, Dauer: 0,2s*/
+}
+.zoom:hover{
     transform: scale(1.25); /*skaliert auf 125%*/
   }
 /*Raster für Header*/
