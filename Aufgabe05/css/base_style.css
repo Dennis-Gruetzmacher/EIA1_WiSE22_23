@@ -78,10 +78,10 @@ h1, h2, h3,h4 {
 }
 /*Sticky banner welches mitwandert*/
 .sticky-banner {
-    position: sticky;
-    top: 0;
-    float:right;
-    z-index: 6;
+    position: sticky; /*Wandert mit dem Bildschirm mit*/
+    top: 0; /*An der Oberkante des Bildes positioniert*/
+    float:right; /*An der rechten Seite des Bildschirms*/
+    z-index: 6; /*Vor allen anderen Elementen*/
   }
   /*Ausmasse des Banners*/
   .sticky-img {
@@ -133,6 +133,7 @@ h1, h2, h3,h4 {
     position:relative; /*Notwendig damit Z-index greift*/
     z-index:2; /*Veränderung des Z-index notwendig da sonst das skalierte bild "hinter" nachfolgenden Bildern erscheint*/
     transform: scale(1.25); /*skaliert auf 125%*/
+    box-shadow:5px 5px 5px grey; /*verschwommerner, grauer Schatten bei gehoverten Bildern*/
   }
 
 /*Raster für Header*/
