@@ -5,53 +5,57 @@
     margin:0;
     padding:0;
 }
-/*Grundlagen des form elements*/
+/*Positionsdaten der header Animation*/
 .header-fade {
     position: Absolute;
     width: 100%;
     height: 400px;
     max-height: 400px;
   }
-  /*Hero images welche faden*/
-  .hero-img {
-    height: 400px;
-    max-height:400px;
-    width: 100%;
-    position: absolute;
-    top:0;
-    left:0;
-    z-index: 1;
-    animation: fade 9s infinite;
+  /*Klasse für die 6 hero images die nacheinander "faden"*/
+.hero-img {
+  height: 400px;
+  max-height:400px;
+  width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 1;
+  animation: fade 9s infinite;/*Grunddaten der animation*/
   }
-  /*Basis Hero image das nicht faded*/
-  .hero-img-base {
-    height: 400px;
-    max-height:400px;
-    width: 100%;
-    position: absolute;
-    top:0;
-    left:0;
-    z-index:0;
+/*Basis Hero image das nicht faded*/
+/*Notwendig da die einzelnen hero images sonst manchmal gleichzeitig unsichtbar werden (blinken)*/
+/*das statische hero-img-base lässt die animation kontinuierlich erscheinen*/
+.hero-img-base {
+  height: 400px;
+  max-height:400px;
+  width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index:0;
   }
-  /*Animation delays für die 6 hero images*/
-  #hero-base {
-    animation-delay: 0s;
-  }
-  #hero-1 {
-    animation-delay: 1.5s;
-  }
-  #hero-2 {
-    animation-delay: 3s;
-  }
-  #hero-3 {
-    animation-delay: 4.5s;
-  }
-  #hero-4 {
-    animation-delay: 6s;
-  }
-  #hero-5 {
-    animation-delay: 7.5s;
-  }
+/****IDs*****/
+/*Animation delays für die 6 hero images*/
+/*Dadurch starten die hero images nacheinander und erzeugen den Eindruck einer fliessenden Animation*/
+#hero-base {
+  animation-delay: 0s;
+}
+#hero-1 {
+  animation-delay: 1.5s;
+}
+#hero-2 {
+  animation-delay: 3s;
+}
+#hero-3 {
+  animation-delay: 4.5s;
+}
+#hero-4 {
+  animation-delay: 6s;
+}
+#hero-5 {
+  animation-delay: 7.5s;
+}
 /*Animation daten für fade*/
   @keyframes fade {
     0% {

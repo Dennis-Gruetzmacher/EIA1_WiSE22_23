@@ -12,7 +12,7 @@
 }
 /****************Grundlegende Elemente definieren*******************/
 body {
-    background-color:rgb(255, 255, 255); 
+    background-color:rgb(225, 225, 225); 
     font-family:Lato;
     color:rgb(75, 75, 75);
 }
@@ -34,10 +34,6 @@ a {
 h1, h2, h3,h4 {
     padding-bottom:10px;
 }
-/*main div{
-    display:inherit;
-}*/
-
 /*******************Klassen********************/
 /*Container für Content Breite 800px*/
 .mainContainer {
@@ -80,18 +76,18 @@ h1, h2, h3,h4 {
 .link a:hover{
     text-shadow: 2px 2px 5px rgb(50, 50, 50);
 }
-/*Sticky banner welches mit wandert*/
+/*Sticky banner welches mitwandert*/
 .sticky-banner {
-    position: sticky;
-    top: 0;
-    float:right;
-    z-index: 6;
+    position: sticky; /*Wandert mit dem Bildschirm mit*/
+    top: 0; /*An der Oberkante des Bildes positioniert*/
+    float:right; /*An der rechten Seite des Bildschirms*/
+    z-index: 6; /*Vor allen anderen Elementen*/
   }
+  /*Ausmasse des Banners*/
   .sticky-img {
       height: 150px;
       width: 300px;
   }
-
 /*Klasse für das Navigationsmenü*/
 /*Unordered List in .topnav*/
 .topnav ul {
@@ -122,13 +118,24 @@ h1, h2, h3,h4 {
     color:rgb(255, 255, 255);
     text-decoration: underline;
 }
-/*Zoom object on hover*/
-.zoom {
-    transition: transform .2s; /* animation transformiert bild, Dauer: 0,2s*/
+/*Klassen zum ausgrauen und herausskalieren der Bilder bei hover*/
+/*IMG in .greyout werden mit ease-in and out verlauf innerhalb von einer halben Sekunde verändert*/
+.greyout img {
+    transition:opacity 0.5s, transform .5s;
+    transition-timing-function: ease-in-out;
 }
+/*IMG innerhalb von .greyhound über welchen NICHT gehovert wird werden durchsichtig*/
+.greyout:hover img:not(:hover) {
+    opacity:0.5;
+}
+/*skaliere bilder mit .zoom auf 125% und setze sie in den Vordergrund (Z-index)*/
 .zoom:hover{
+    position:relative; /*Notwendig damit Z-index greift*/
+    z-index:2; /*Veränderung des Z-index notwendig da sonst das skalierte bild "hinter" nachfolgenden Bildern erscheint*/
     transform: scale(1.25); /*skaliert auf 125%*/
+    box-shadow:5px 5px 5px grey; /*verschwommerner, grauer Schatten bei gehoverten Bildern*/
   }
+
 /*Raster für Header*/
 .grid-header {
     display: grid;
@@ -175,7 +182,7 @@ Raster Header Feld 3 - Navigation*/
     grid-area: backtotop;
     text-align: center;
 }
-/*IDs*/
+/*******************IDs************************/
 /*EIA1-Logo*/
 #logo{
     margin-top:50px;
@@ -189,6 +196,7 @@ Raster Header Feld 3 - Navigation*/
     margin: 5px;
     opacity:0.5;
 }
+/*gehoverte contact icons werden vollständig sichtbar*/
 #icon-contact:hover{
     opacity:1.0;
 }
