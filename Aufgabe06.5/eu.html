@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Carbon Dioxide Emissions</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="ts/data.js"></script> <!--Einbindung des Skriptes-->
+    <script src="ts/data.js" defer></script>
 </head>
 
 <body>
     <nav>
         <div class="row">
-            <div class="wrapper">
+            <div class="wrapper" id="DE">
                 <img src="images/germany.png" height="76px" class="germany">
                 <h5>Deutschland</h5>
             </div>
@@ -134,22 +134,22 @@
     </h1>
 
     <main>
-        <section>
+        <section id="currentPop">
             <h2>65,48Mio</h2>
             <p>Gesamtzahl Einwohnerinnen und Einwohner in Frankreich in 2022</p>
         </section>
 
-        <section>
+        <section id="currentPercentage">
             <h2>14%</h2>
             <p>Relativ zur Gesamtzahl in der EU</p>
         </section>
 
-        <section>
+        <section id="currentGrowth">
             <h2>5,1%</h2>
             <p>Wachstumsrate seit 2008</p>
         </section>
 
-        <section>
+        <section id="absoluteGrowth">
             <h2>3,34Mio</h2>
             <p>Wachstumsrate gesamt zwischen 2008 and 2022</p>
         </section>
