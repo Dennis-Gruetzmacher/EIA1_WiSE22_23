@@ -5,7 +5,13 @@
 var currentPopEU: number = 447.01;
 var baselineYear: number = 2008;
 /*Array der Grunddaten --> coreData: Name des Landes, Aktuelle Bevölkerungszahl, Bevlkerung im baseline Jahr 2008*/
-var coreData: any [][] = [ [ "Deutschland", 83.24, 82.11 ], [ "Frankreich", 67.39, 64.37 ], ["Italien", 59.55, 58.83 ], ["Niederlande", 17.44, 16.45 ] ];
+var coreData: any [][] = 
+[ 
+   [ "Deutschland", 83.24, 82.11 ], 
+   [ "Frankreich", 67.39, 64.37 ], 
+   ["Italien", 59.55, 58.83 ], 
+   ["Niederlande", 17.44, 16.45 ] 
+];
 /*Array calcData - calculated Data --> berechnte Werte. Deklariert, noch nicht initialisiert*/
 var calcData: number [][] = [ [], [], [], [] ]; 
 
@@ -42,8 +48,10 @@ curGro.textContent = round(calcData[0][1], 2) + " %";
 const absGro = document.querySelector("#absoluteGrowth h2");
 absGro.textContent = round(calcData[0][2], 2) + " Mio.";
 
+
 /*Funktionen*/
 /*Runde eine Nummer, precision = anzahl nachkommastellen*/
+
 function round(value, precision) {
     var multiplier = Math.pow(10, precision || 0);
     return Math.round(value * multiplier) / multiplier;
