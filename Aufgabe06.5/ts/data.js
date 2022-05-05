@@ -4,7 +4,12 @@
 var currentPopEU = 447.01;
 var baselineYear = 2008;
 /*Array der Grunddaten --> coreData: Name des Landes, Aktuelle Bevölkerungszahl, Bevlkerung im baseline Jahr 2008*/
-var coreData = [["Deutschland", 83.24, 82.11], ["Frankreich", 67.39, 64.37], ["Italien", 59.55, 58.83], ["Niederlande", 17.44, 16.45]];
+var coreData = [
+    ["Deutschland", 83.24, 82.11],
+    ["Frankreich", 67.39, 64.37],
+    ["Italien", 59.55, 58.83],
+    ["Niederlande", 17.44, 16.45]
+];
 /*Array calcData - calculated Data --> berechnte Werte. Deklariert, noch nicht initialisiert*/
 var calcData = [[], [], [], []];
 /**********Berechnungen und Ausgaben in die Konsole**************/
