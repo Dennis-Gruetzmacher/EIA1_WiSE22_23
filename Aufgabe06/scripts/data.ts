@@ -1,3 +1,6 @@
+/***Namespace****/
+namespace Aufgabe05
+{
 /******Variablen und Konstanten*******/
 /*Deutschland, Frankreich, Italien, Niederlande*/
 /*Basisdaten: Bevölkerung EU + baseline Jahr zum Vergleichen*/
@@ -12,14 +15,14 @@ var coreData: any [][] =
    [ "Niederlande", 17.44, 16.45 ] 
 ];
 /*Array calcData - calculated Data --> berechnete Werte.*/
-var calcData: number [][] =[[],[],[],[]]; 
+var calcData: number [][] = [ [], [], [], [] ]; 
 
 /**********Berechnungen und Ausgaben in die Konsole**************/
 /*Schleife zur Berechnung und Ausgabe der Werte*/
 for (let i = 0; i < 4; i++)
 {
    /*Berechnung der Werte*/
-   calcData[i][0] = ( coreData[i][1] / currentPopEU )*100; /*Berechnung des Prozentualen Anteils im Vergleich zur EU + Speichern der Ergebnise in calcData[i][0] */
+   calcData[i][0] = ( coreData[i][1] / currentPopEU ) * 100; /*Berechnung des Prozentualen Anteils im Vergleich zur EU + Speichern der Ergebnise in calcData[i][0] */
    calcData[i][1] = ( ( ( coreData[i][1] / coreData[i][2]) - 1 ) * 100 ); /*Berchnung der Prozentualen Wachstumsrate für jedes Land + Speichern in calcData [i][1]*/
    calcData[i][2] = coreData[i][1] - coreData[i][2]; /*Berchnung der Absoluten Wachstumsrate für jedes Land + Speichern in calcData [i][2]*/
    /*Ausgabe der Werte*/
@@ -36,4 +39,5 @@ function round(value, precision)
 {
     var multiplier = Math.pow(10, precision || 0);
     return Math.round(value * multiplier) / multiplier;
+}
 }
