@@ -1,5 +1,5 @@
 /***Namespace****/
-namespace Aufgabe05
+namespace Aufgabe06
 {
 /******Variablen und Konstanten*******/
 /*Deutschland, Frankreich, Italien, Niederlande*/

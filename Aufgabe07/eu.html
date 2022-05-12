@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carbon Dioxide Emissions</title>
+    <title>Population of the EU</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="scripts/data.js" defer></script>
 </head>
@@ -130,27 +130,33 @@
 
     <img src="images/eu_stars.png" class="stars">
     <h1>
-        Einwohnerzahl in der europäischen Union
+        Einwohnerzahlen in der europäischen Union
     </h1>
 
     <main>
-        <section id="currentPop">
-            <h2>65,48Mio</h2>
-            <p>Gesamtzahl Einwohnerinnen und Einwohner in Frankreich in 2022</p>
+        <section>
+            <h2 id="currentPop">65,48Mio</h2>
+            <p id="idEU">Gesamtzahl Einwohnerinnen und Einwohner in <span id="activeCountry">Frankreich</span> in 2022</p>
         </section>
 
-        <section id="currentPercentage">
-            <h2>14%</h2>
+        <section class="hidden">
+            <div class="chartWrapper">
+                <div class="chart"></div>
+            </div>
+            <h2 id="currentPercentage">14%</h2>
             <p>Relativ zur Gesamtzahl in der EU</p>
         </section>
 
-        <section id="currentGrowth">
-            <h2>5,1%</h2>
+        <section>
+            <div class="chartWrapper">
+                <div class="chartGrowth"></div>
+            </div>
+            <h2 id="currentGrowth">5,1%</h2>
             <p>Wachstumsrate seit 2008</p>
         </section>
 
-        <section id="absoluteGrowth">
-            <h2>3,34Mio</h2>
+        <section>
+            <h2 id="absoluteGrowth">3,34Mio</h2>
             <p>Wachstumsrate gesamt zwischen 2008 and 2022</p>
         </section>
     </main>
