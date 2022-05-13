@@ -68,31 +68,36 @@ var Aufgabe07;
         document.querySelector(".hidden").setAttribute("style", "inline-block;");
         if (activeData[0] == "Europäische Union") {
             document.querySelector(".hidden").setAttribute("style", "display:none;");
-            let country = document.querySelector("#activeCountry");
-            country.innerHTML = " der europäischen Union ";
+            document.querySelector("#activeCountry").innerHTML = " der europäischen Union ";
+            document.querySelector("#activeheader").innerHTML = " der europäischen Union";
         }
         else if (activeData[0] == "Niederlande") {
-            let country = document.querySelector("#activeCountry");
-            country.innerHTML = " den Niederlanden ";
-            let curPer = document.querySelector("#currentPercentage");
-            curPer.innerHTML = activeData[3] + "%";
+            document.querySelector("#activeCountry").innerHTML = " den Niederlanden ";
+            document.querySelector("#activeheader").innerHTML = " den Niederlanden";
+        }
+        else if (activeData[0] == "Slowakei") {
+            document.querySelector("#activeheader").innerHTML = "der " + activeData[0];
+            document.querySelector("#activeCountry").innerHTML = "der " + activeData[0];
         }
         else {
-            let country = document.querySelector("#activeCountry");
-            country.innerHTML = activeData[0];
-            let curPer = document.querySelector("#currentPercentage");
-            curPer.innerHTML = activeData[3] + "%";
+            document.querySelector("#activeheader").innerHTML = activeData[0];
+            document.querySelector("#activeCountry").innerHTML = activeData[0];
         }
-        let curPop = document.querySelector("#currentPop");
-        curPop.innerHTML = activeData[1] + " Mio.";
-        let curGro = document.querySelector("#currentGrowth");
-        curGro.innerHTML = activeData[4] + " %";
-        let absGro = document.querySelector("#absoluteGrowth");
-        absGro.innerHTML = activeData[5] + " Mio.";
+        document.querySelector("#currentPercentage").innerHTML = activeData[3] + "%";
+        document.querySelector("#currentPop").innerHTML = activeData[1] + " Mio.";
+        document.querySelector("#currentGrowth").innerHTML = activeData[4] + " %";
+        document.querySelector("#absoluteGrowth").innerHTML = activeData[5] + " Mio.";
     }
     function chartGraph() {
-        document.querySelector(".chartWrapper .chart").setAttribute("style", "height:" + activeData[3] + "%");
-        document.querySelector(".chartWrapper .chartGrowth").setAttribute("style", "height:" + activeData[4] + "%");
+        document.querySelector(".chart").setAttribute("style", "height:" + activeData[3] + "%");
+        if (activeData[4] >= 0) {
+            document.querySelector(".negativechartGrowth").className = "chartGrowth";
+            document.querySelector(".chartGrowth").setAttribute("style", "height:" + activeData[4] + "%");
+        }
+        else {
+            document.querySelector(".chartGrowth").className = "negativechartGrowth";
+            document.querySelector(".negativechartGrowth").setAttribute("style", "height:" + Math.abs(activeData[4]) + "px");
+        }
     }
     /*Runde eine Nummer, precision = anzahl nachkommastellen*/
     function round(value, precision) {
