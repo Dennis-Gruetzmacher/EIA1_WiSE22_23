@@ -12,11 +12,18 @@ body {
     transition: all .5s;
 }
 
-.wrapper:hover, .wrapper.active {
+.wrapper:hover
+{
     transform: scale(1.1);
     opacity: 1;
 }
 
+.wrapper #activeHighlight
+{
+    transform: scale(1.1);
+    color:red;
+    background: red;
+}
 .row {
     display: flex;
     justify-content: space-around;
@@ -31,8 +38,13 @@ nav {
     margin-bottom: 10px;
 }
 
-section {
+section#startscreen {
     display: inline-block;
+    margin: 20px;
+    width: 100%;
+}
+section {
+    display: none;
     margin: 20px;
     width: 200px;
 }
@@ -58,14 +70,14 @@ footer p {
     height: 20%;
     background: rgb(75, 150, 75);
 }
-.chartGrowth {
+#chartpositive.chartGrowth{
     position: absolute;
     bottom: 0px;
     width: 100%;
     height: 20%;
     background: rgb(75, 150, 75);
 }
-.negativechartGrowth {
+#chartnegative.chartGrowth{
     position: absolute;
     top: 0px;
     width: 100%;

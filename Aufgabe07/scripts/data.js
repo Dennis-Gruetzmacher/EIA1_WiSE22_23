@@ -33,41 +33,39 @@ var Aufgabe07;
         ["Schweden", 10.35, 8.22],
         ["Europäische Union", 447.7, 440.66]
     ];
+    /*Arra vorbereitet für die Klassen der Länder */
     var countriesClasses = [];
     /*Array vorbereitet für die Aktiven Daten (nach klick)*/
     var activeData = [];
+    /*Wähle alle Bilder im Dokument aus und speichere sie in countries*/
     const countries = document.querySelectorAll("img");
-    for (let i = 0; i < countries.length; i++) {
-        countriesClasses[i] = countries[i].getAttribute("class");
-        countries[i].addEventListener("click", showtime);
+    for (let i = 0; i < countries.length; i++) /*Schleife welche countries durchläuft */ {
+        countriesClasses[i] = countries[i].getAttribute("class"); /*Speichere die Klasse jedes Elements in countries in countriesClasses[] */
+        countries[i].addEventListener("click", showtime); /*Hänge einen EventListener an jedes element von countries*/
     }
     /*Funktionen*/
     function showtime() {
-        createActiveIndex();
-        createActiveData(activeIndex);
+        createActiveData(createActiveIndex());
+        showData();
+        highlightActive(activeIndex);
         writeValues();
         chartGraph();
     }
     function createActiveIndex() {
-        const curClassHover = document.querySelector("img:hover").getAttribute("class");
-        activeIndex = countriesClasses.indexOf(curClassHover);
-        console.log(activeIndex);
+        const currentClassHover = document.querySelector("img:hover").getAttribute("class");
+        activeIndex = countriesClasses.indexOf(currentClassHover);
+        return activeIndex;
     }
     function createActiveData(activeIndex) {
         activeData.length = 0;
         activeData.push(coreData[activeIndex][0], coreData[activeIndex][1], coreData[activeIndex][2]);
-        console.log("Land: " + activeData[0] + " Bevölkerung 2022: " + activeData[1] + " Bevölkerung 2008: " + activeData[2]);
         activeData[3] = round((coreData[activeIndex][1] / coreData[coreData.length - 1][1]) * 100, 2);
         activeData[4] = round((((coreData[activeIndex][1] / coreData[activeIndex][2]) - 1) * 100), 2);
         activeData[5] = round(coreData[activeIndex][1] - coreData[activeIndex][2], 2);
-        console.log("Prozent: " + activeData[3] + " %");
-        console.log("Wachstum in Prozent: " + activeData[4] + " %");
-        console.log("Wachstum Absolut: " + activeData[5] + "Mio.");
     }
     function writeValues() {
-        document.querySelector(".hidden").setAttribute("style", "inline-block;");
         if (activeData[0] == "Europäische Union") {
-            document.querySelector(".hidden").setAttribute("style", "display:none;");
+            document.querySelector("#datascreen2").setAttribute("style", "display:none;");
             document.querySelector("#activeCountry").innerHTML = " der europäischen Union ";
             document.querySelector("#activeheader").innerHTML = " der europäischen Union";
         }
@@ -87,17 +85,33 @@ var Aufgabe07;
         document.querySelector("#currentPop").innerHTML = activeData[1] + " Mio.";
         document.querySelector("#currentGrowth").innerHTML = activeData[4] + " %";
         document.querySelector("#absoluteGrowth").innerHTML = activeData[5] + " Mio.";
+        if (activeData[5] > 0) {
+            document.querySelector("#absoluteGrowth").setAttribute("style", "color: rgb(75, 150, 75);");
+        }
+        else {
+            document.querySelector("#absoluteGrowth").setAttribute("style", "color: rgb(185, 40, 40);");
+        }
     }
     function chartGraph() {
         document.querySelector(".chart").setAttribute("style", "height:" + activeData[3] + "%");
         if (activeData[4] >= 0) {
-            document.querySelector(".negativechartGrowth").className = "chartGrowth";
-            document.querySelector(".chartGrowth").setAttribute("style", "height:" + activeData[4] + "%");
+            document.querySelector(".chartGrowth").setAttribute("id", "chartpositive");
+            document.querySelector(".chartGrowth").setAttribute("style", "height:" + activeData[4] + "%;");
         }
         else {
-            document.querySelector(".chartGrowth").className = "negativechartGrowth";
-            document.querySelector(".negativechartGrowth").setAttribute("style", "height:" + Math.abs(activeData[4]) + "px");
+            document.querySelector(".chartGrowth").setAttribute("id", "chartnegative");
+            document.querySelector(".chartGrowth").setAttribute("style", "height:" + Math.abs(activeData[4]) + "%;");
         }
+    }
+    function showData() {
+        document.querySelector("#startscreen").setAttribute("style", "display:none");
+        for (let i = 1; i < 5; i++) {
+            document.querySelector("#datascreen" + i).setAttribute("style", "display:inline-block");
+        }
+    }
+    function highlightActive(activeIndex) {
+        console.log(countriesClasses[activeIndex]);
+        document.querySelector("." + countriesClasses[activeIndex]).setAttribute("id", "activeHighlight");
     }
     /*Runde eine Nummer, precision = anzahl nachkommastellen*/
     function round(value, precision) {
