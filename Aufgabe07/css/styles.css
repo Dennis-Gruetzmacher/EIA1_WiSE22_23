@@ -12,18 +12,12 @@ body {
     transition: all .5s;
 }
 
-.wrapper:hover
+.wrapper:hover, #activeHighlight
 {
     transform: scale(1.1);
     opacity: 1;
 }
 
-.wrapper #activeHighlight
-{
-    transform: scale(1.1);
-    color:red;
-    background: red;
-}
 .row {
     display: flex;
     justify-content: space-around;
