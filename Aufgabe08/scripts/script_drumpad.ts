@@ -1,5 +1,5 @@
 /*****Variablen: Deklaration und Initialisierung******/
-
+var activeIndex: string;
 var sounds: HTMLAudioElement[] = 
 [
     new Audio("assets/hihat.mp3"),
@@ -12,27 +12,36 @@ var sounds: HTMLAudioElement[] =
     new Audio("assets/laugh-1.mp3"),
     new Audio("assets/laugh-2.mp3")
 ];
+var sampleBeat:number[] = [2, 2, 2, 1, 0, 0, 1, 2, 2, 2];
 /***Setup und VErteilen der EventListener*************/
 const pads = document.querySelectorAll(".pad");
 for (let i = 0; i < pads.length; i++)
 {
    pads[i].addEventListener("click", playSample);
 }
+document.querySelector("body").addEventListener("keypress", playSamplebyKeyes);
 document.querySelector(".playbutton").addEventListener("click", playBeats);
 
 /***********Funktionen***************** */
 function playSample()
 {
-    let activeIndex = document.querySelector(".pad:hover").getAttribute("id");
+    activeIndex = document.querySelector(".pad:hover").getAttribute("id");
     sounds[activeIndex].play();
+}
+function playSamplebyKeyes(beat)
+{
+    activeIndex = String((beat.key) - 1);
+    sounds[activeIndex].play();
+}
+
+function repeatBeats()
+{
+    setInterval(playBeats, 500);
 }
 function playBeats()
 {
-    setInterval(function() 
-    {
-        for( let i = 0; i < 3; i++)
+    for( let i = 0; i < sampleBeat.length; i++)
         {
-            sounds[i].play();
+            sounds[sampleBeat[i]].play();
         }
-    }, 500);
 }
