@@ -1,0 +1,48 @@
+*
+{
+    padding: 0px;
+    margin:0px;
+}
+body
+{
+    background: #000000;
+    text-align:center;
+}
+.drumpad
+{
+    margin-top:10px;
+}
+.row
+{
+
+}
+
+.pad
+{
+    display:inline-block;
+    margin: 1px;
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    border-style:solid;
+    border-width: 1px;
+
+}
+#pad1_1, #pad1_2, #pad1_3
+{
+    background:linear-gradient(#6cabfd,#2e7be3);
+    border-color:#7bb4ff;
+    box-shadow: 0px -3px #8fb8ed;
+}
+#pad2_1, #pad2_2, #pad2_3
+{
+    background:linear-gradient(#f85dad,#f52891);
+    border-color:#e485b6;
+    box-shadow: 0px -2px #e485b6;
+}
+#pad3_1, #pad3_2, #pad3_3
+{
+    background:linear-gradient(#fbb25f, #de851f);
+    border-color:#cba478;
+    box-shadow: 0px -2px #cba478;
+}
