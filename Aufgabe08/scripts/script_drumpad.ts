@@ -18,11 +18,21 @@ for (let i = 0; i < pads.length; i++)
 {
    pads[i].addEventListener("click", playSample);
 }
-document.querySelector(".playbutton").addEventListener("click", playSample);
+document.querySelector(".playbutton").addEventListener("click", playBeats);
 
 /***********Funktionen***************** */
 function playSample()
 {
     let activeIndex = document.querySelector(".pad:hover").getAttribute("id");
     sounds[activeIndex].play();
+}
+function playBeats()
+{
+    setInterval(function() 
+    {
+        for( let i = 0; i < 3; i++)
+        {
+            sounds[i].play();
+        }
+    }, 500);
 }
