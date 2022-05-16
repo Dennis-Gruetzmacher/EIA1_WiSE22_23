@@ -1,5 +1,6 @@
 /*****Variablen: Deklaration und Initialisierung******/
 var activeIndex: string;
+var playbackID: number;
 var sounds: HTMLAudioElement[] = 
 [
     new Audio("assets/hihat.mp3"),
@@ -43,7 +44,14 @@ function playSamplebyKeys(beat)
 
 function repeatBeats()
 {
-    setInterval(playBeats, 500);
+    while( playbackID )
+    {
+        clearInterval(playbackID);
+        playbackID = 0;
+    }
+
+    playbackID = setInterval(playBeats, 500);
+    console.log(playbackID);
 }
 function playBeats()
 {
@@ -51,6 +59,17 @@ function playBeats()
         {
             sounds[sampleBeat[i]].play();
         }
+/*
+        setInterval(function()
+            {
+                sounds[1].play();
+            }, 500);
+            setTimeout(function(){sounds[0].play() }, 200);  
+        setTimeout(function(){sounds[2].play() }, 250);  
+        setInterval(function()
+            {
+                sounds[2].play();
+            }, 750);*/
 }
 function checkPressedKey(test)
 {

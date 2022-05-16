@@ -1,3 +1,4 @@
+/*Alle MArgins und Paddings auf 0 setzen*/
 *
 {
     padding: 0px;
@@ -8,15 +9,12 @@ body
     background: #000000;
     text-align:center;
 }
+/*gesamtes Drumpad*/
 .drumpad
 {
     margin-top:10px;
 }
-.row
-{
-
-}
-
+/*Grunddesign aller Pads (GRöße, usw,...*/
 .pad
 {
     display:inline-block;
@@ -26,23 +24,49 @@ body
     border-radius: 10px;
     border-style:solid;
     border-width: 1px;
+    transition: all 0.5s;
 
 }
+/*Blaue Pads --> stellen drums dar*/
 .drum
 {
     background:linear-gradient(#6cabfd,#2e7be3);
     border-color:#7bb4ff;
-    box-shadow: 0px -3px #8fb8ed;
+    box-shadow: 0px -2px #8fb8ed;
 }
+/*rote Pads --> stellen reine Noten dar*/
 .notes
 {
     background:linear-gradient(#f85dad,#f52891);
     border-color:#e485b6;
     box-shadow: 0px -2px #e485b6;
 }
+/*orange Pads --> stellen Gelächter dar*/
 .laughter
 {
     background:linear-gradient(#fbb25f, #de851f);
     border-color:#cba478;
     box-shadow: 0px -2px #cba478;
 }
+/*Bild des PLay Buttons*/
+#play
+{
+    height: 150px;
+    width: 150px;
+    transition: all 0.5s;
+}
+@media only screen and (max-width: 600px) {
+    .pad 
+    {
+      height: 75px;
+      width: 75px;
+      border-radius:5px;
+
+    }
+    #play
+    {
+        height: 75px;
+        width: 75px;
+    }
+  }
+

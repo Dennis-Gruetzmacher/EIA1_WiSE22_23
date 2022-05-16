@@ -1,5 +1,6 @@
 /*****Variablen: Deklaration und Initialisierung******/
 var activeIndex;
+var playbackID;
 var sounds = [
     new Audio("assets/hihat.mp3"),
     new Audio("assets/kick.mp3"),
@@ -34,12 +35,28 @@ function playSamplebyKeys(beat) {
     }
 }
 function repeatBeats() {
-    setInterval(playBeats, 500);
+    while (playbackID) {
+        clearInterval(playbackID);
+        playbackID = 0;
+    }
+    playbackID = setInterval(playBeats, 500);
+    console.log(playbackID);
 }
 function playBeats() {
     for (let i = 0; i < sampleBeat.length; i++) {
         sounds[sampleBeat[i]].play();
     }
+    /*
+            setInterval(function()
+                {
+                    sounds[1].play();
+                }, 500);
+                setTimeout(function(){sounds[0].play() }, 200);
+            setTimeout(function(){sounds[2].play() }, 250);
+            setInterval(function()
+                {
+                    sounds[2].play();
+                }, 750);*/
 }
 function checkPressedKey(test) {
     for (let i = 1; i < 10; i++) {
