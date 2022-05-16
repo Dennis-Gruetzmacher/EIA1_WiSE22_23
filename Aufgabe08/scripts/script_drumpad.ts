@@ -21,7 +21,7 @@ for (let i = 0; i < pads.length; i++)
    pads[i].addEventListener("click", playSample);
 }
 document.querySelector("body").addEventListener("keypress", playSamplebyKeys);
-document.querySelector(".playbutton").addEventListener("click", repeatBeats);
+document.querySelector(".playbutton").addEventListener("click", playBeats);
 
 /***********Funktionen***************** */
 function playSample()
@@ -41,7 +41,6 @@ function playSamplebyKeys(beat)
         return;
     }
 }
-
 function repeatBeats()
 {
     while( playbackID )
@@ -55,21 +54,21 @@ function repeatBeats()
 }
 function playBeats()
 {
-    for( let i = 0; i < sampleBeat.length; i++)
+    /*for( let i = 0; i < sampleBeat.length; i++)
         {
             sounds[sampleBeat[i]].play();
-        }
-/*
+        }*/
+
         setInterval(function()
             {
                 sounds[1].play();
-            }, 500);
-            setTimeout(function(){sounds[0].play() }, 200);  
+            }, 250);
+        /*setTimeout(function(){sounds[0].play() }, 200);*/  
         setTimeout(function(){sounds[2].play() }, 250);  
         setInterval(function()
             {
                 sounds[2].play();
-            }, 750);*/
+            }, 500);
 }
 function checkPressedKey(test)
 {
