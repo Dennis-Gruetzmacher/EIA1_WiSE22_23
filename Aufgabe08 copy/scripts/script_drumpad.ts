@@ -1,11 +1,8 @@
-namespace Aufgabe08
-{
-/*****Variablen: Deklaration und Initialisierung******/
-/*Variable vorbereitet für die Übergabe des aktiven Index für die Abspielfunktionen*/
-var activeIndex: string; 
-/*Variable vorbereitet für die Id der setInterval Funktion später */
+namespace Aufgabe08testing
+{/*****Variablen: Deklaration und Initialisierung******/
+var activeIndex: string;
 var playbackID: number = 0;
-/*Array gefüllt mit allen Audio-Elementen */
+var tempo: number = 100;
 const sounds: HTMLAudioElement[] = 
 [
     new Audio("assets/hihat.mp3"),
@@ -18,7 +15,6 @@ const sounds: HTMLAudioElement[] =
     new Audio("assets/laugh-1.mp3"),
     new Audio("assets/laugh-2.mp3")
 ];
-/*Array der Audio-Elemente für den wiederholenden Beat*/
 const beats: HTMLAudioElement[] = 
 [
     new Audio("assets/hihat.mp3"),
@@ -26,26 +22,24 @@ const beats: HTMLAudioElement[] =
     new Audio("assets/snare.mp3"),
     new Audio("assets/kick.mp3")
 ];
-
-/*******Setup und Verteilen der EventListener*************/
-const pads = document.querySelectorAll(".pad"); /*Übergibt Array aller Elemente mit Klasse "pad" im document */
+/***Setup und Verteilen der EventListener*************/
+const pads = document.querySelectorAll(".pad"); /*Übergibt Array aller Pads im document */
 for (let i = 0; i < pads.length; i++)
 { /*Schleife durchläuft Array und hängt an jedes element einen EventListener*/
    pads[i].addEventListener("click", playSample);
 }
-/*EventListener an den "Body" des dokuments hängen --> horcht auf Tasten */
 document.querySelector("body").addEventListener("keypress", playSamplebyKeys);
-/*EventListener an den Play-Button hängen*/
-document.querySelector(".playbutton").addEventListener("click", repeatBeats);
+document.querySelector("#playButton").addEventListener("click", repeatBeats);
+document.querySelector("#stopButton").addEventListener("click", stopBeats);
+document.querySelector("#tempoChangeUp").addEventListener("click", tempoUp);
+document.querySelector("#tempoChangeDown").addEventListener("click", tempoDown);
 
 /***********Funktionen******************/
-/*Hauptfunktion: Übergit ID des gecklickten Elements und spielt entsprechende Stelle im Array sounds[] ab */
 function playSample()
 {
     activeIndex = document.querySelector(".pad:hover").getAttribute("id"); /*übergibt aktiven Index des gehoverten Elements */
     sounds[activeIndex].play(); /*Spiele die Sounddatei des aktiven Index ab*/
 }
-/*Funktion welche nach Tastendruck einen Ton abspielt */
 function playSamplebyKeys(beat)
 {
     if(checkPressedKey(beat.key) == true)
@@ -59,16 +53,22 @@ function playSamplebyKeys(beat)
     }
 }
 function repeatBeats()
-{
+{   
     clearInterval(playbackID);
-    playbackID = setInterval(playBeats, 1000);
+    playbackID = setInterval(playBeats, tempo);
 }
 function playBeats()
 {       
-    for(let i = 0; i < 4; i++)
-    {
-        setTimeout(function(){beats[i].play() }, i * 250);
-    }
+        setTimeout(function(){beats[1].play() }, tempo);
+      /*  setTimeout(function(){sounds[1].play() }, 250);  
+        setTimeout(function(){sounds[1].play() }, 500);
+        setTimeout(function(){sounds[1].play() }, 750);
+        setTimeout(function(){sounds[1].play() }, 1000);
+        setTimeout(function(){sounds[2].play() }, 750);*/
+}
+function stopBeats()
+{
+    clearInterval(playbackID);
 }
 function checkPressedKey(activeKey)
 {
@@ -82,5 +82,31 @@ function checkPressedKey(activeKey)
     }
     console.log("Wrong key");
     return false;
+}
+function tempoUp()
+{
+    console.log("core: " + tempo);
+    if ( tempo < 2000 )
+    {
+        tempo += 50;
+        console.log("mod: " + tempo);
+    }
+    else
+    {
+        tempo = 1000;
+    }
+}
+function tempoDown()
+{
+    console.log("core: " + tempo);
+    if ( tempo > 0 )
+    {
+        tempo -= 50;
+        console.log("mod: " + tempo);
+    }
+    else
+    {
+        tempo = 1000;
+    }
 }
 }
