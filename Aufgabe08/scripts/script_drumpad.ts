@@ -34,7 +34,7 @@ for (let i = 0; i < pads.length; i++)
    pads[i].addEventListener("click", playSample);
 }
 /*EventListener an den "Body" des dokuments hängen --> horcht auf Tasten */
-document.querySelector("body").addEventListener("keypress", playSamplebyKeys);
+document.addEventListener("keydown", playSamplebyKeys);
 /*EventListener an den Play-Button hängen*/
 document.querySelector(".playbutton").addEventListener("click", repeatBeats);
 
@@ -46,11 +46,11 @@ function playSample()
     sounds[activeIndex].play(); /*Spiele die Sounddatei des aktiven Index ab*/
 }
 /*Funktion welche nach Tastendruck einen Ton abspielt */
-function playSamplebyKeys(beat)
+function playSamplebyKeys(pressed)
 {
-    if(checkPressedKey(beat.key) == true)
+    if(checkPressedKey(pressed.key) == true)
     {
-    activeIndex = String((beat.key) - 1);
+    activeIndex = String((pressed.key) - 1);
     sounds[activeIndex].play();
     }
     else
