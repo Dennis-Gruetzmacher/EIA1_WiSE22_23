@@ -3,9 +3,9 @@ namespace Aufgabe08
 /*****Variablen: Deklaration und Initialisierung******/
 /*Variable vorbereitet für die Übergabe des aktiven Index für die Abspielfunktionen*/
 var activeIndex: string; 
-/*Variable vorbereitet für die Id der setInterval Funktion später */
+/*Variable vorbereitet für die Id der setInterval Funktion später*/
 var playbackID: number = 0;
-/*Array gefüllt mit allen Audio-Elementen */
+/*Array gefüllt mit allen vorbereiteten Audio-Elementen */
 const sounds: HTMLAudioElement[] = 
 [
     new Audio("assets/hihat.mp3"),
@@ -18,24 +18,19 @@ const sounds: HTMLAudioElement[] =
     new Audio("assets/laugh-1.mp3"),
     new Audio("assets/laugh-2.mp3")
 ];
-/*Array der Audio-Elemente für den wiederholenden Beat*/
-const beats: HTMLAudioElement[] = 
-[
-    new Audio("assets/hihat.mp3"),
-    new Audio("assets/kick.mp3"),
-    new Audio("assets/snare.mp3"),
-    new Audio("assets/kick.mp3")
-];
+/*Array der Indizes der im array sounds[] liegenden Audio-Elemente für den wiederholenden Beat
+hihat, kick,snare*/
+const beats: number[] = [0, 1, 2, 0];
 
 /*******Setup und Verteilen der EventListener*************/
 const pads = document.querySelectorAll(".pad"); /*Übergibt Array aller Elemente mit Klasse "pad" im document */
 for (let i = 0; i < pads.length; i++)
-{ /*Schleife durchläuft Array und hängt an jedes element einen EventListener*/
+{ /*Schleife durchläuft Array und hängt an jedes element "".pad" einen EventListener*/
    pads[i].addEventListener("click", playSample);
 }
 /*EventListener an den "Body" des dokuments hängen --> horcht auf Tasten */
 document.addEventListener("keydown", playSamplebyKeys);
-/*EventListener an den Play-Button hängen*/
+/*EventListener an den Play-Button hängen --> horcht auf klick*/
 document.querySelector(".playbutton").addEventListener("click", repeatBeats);
 
 /***********Funktionen******************/
@@ -58,18 +53,24 @@ function playSamplebyKeys(pressed)
         return;
     }
 }
+/*repeatBeats wiederholt die Funktion pla<Beats jede Sekunde ins unendliche */
 function repeatBeats()
 {
-    clearInterval(playbackID);
-    playbackID = setInterval(playBeats, 1000);
+    clearInterval(playbackID); /*stoppe einen eventuell bereits bestehenden Interval
+                                --> verhindert das die beats mehrfach gleichzeitig abgespielt werden. */
+    playbackID = setInterval(playBeats, 1000); /*führe playBeats jede Sekunde aus, speichere die Interval ID in playbackID */
 }
+/*playBeats durchläuft das Array beats[], holt sich die Indizes für Array sounds[] und spielt die 
+entsprechende Audiodatei mit Zeitversetzung über setTimeout ab */
 function playBeats()
 {       
     for(let i = 0; i < 4; i++)
     {
-        setTimeout(function(){beats[i].play() }, i * 250);
+        setTimeout(function(){sounds[beats[i]].play() }, i * 250);
     }
 }
+/*Funktion checkPressedKey prüft ob die gdrückte Taste zwischen 1 und 9 liegt und übergibt entsprechend
+"true" oder "false" */
 function checkPressedKey(activeKey)
 {
     for(let i = 1; i < 10; i++)

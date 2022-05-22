@@ -1,5 +1,5 @@
-var Aufgabe08testing;
-(function (Aufgabe08testing) {
+var Aufgabe09;
+(function (Aufgabe09) {
     var activeIndex;
     var playbackID = 0;
     var tempo = 100;
@@ -89,5 +89,5 @@ var Aufgabe08testing;
             tempo = 1000;
         }
     }
-})(Aufgabe08testing || (Aufgabe08testing = {}));
+})(Aufgabe09 || (Aufgabe09 = {}));
 //# sourceMappingURL=script_drumpad.js.map
