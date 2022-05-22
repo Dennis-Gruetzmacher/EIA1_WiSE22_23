@@ -55,26 +55,10 @@ body
     width: 150px;
     transition: all 0.5s;
 }
-.playbutton
+.buttonrow
 {
-    display: inline-block;
-}
-.buttonstop
-{
-    border-radius: 10px;
-    background: red;
-}
-.tempobutton
-{
-    display: inline-block;
-}
-.tempoup
-{
-    transform: rotate(-90deg);
-}
-.tempodown
-{
-    transform: rotate(90deg);
+    color: #ffffff;
+    font-size: 70px;
 }
 @media only screen and (max-width: 600px) {
     .pad 
