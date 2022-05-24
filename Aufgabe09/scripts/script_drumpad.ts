@@ -1,9 +1,11 @@
 namespace Aufgabe09
-{/*****Variablen: Deklaration und Initialisierung******/
-var activeIndex: number;
-var playbackID: number;
-var statePlayBeats: boolean = false;
-var stateRecording: boolean = false;
+{
+/*****Variablen: Deklaration und Initialisierung******/
+let activeIndex: number;
+let playbackID: number;
+let statePlayBeats: boolean = false;
+let stateRecording: boolean = false;
+let remixButtonRotation: number = 360;
 
 const sounds: HTMLAudioElement[] = 
 [
@@ -30,8 +32,10 @@ for (let i = 0; i < pads.length; i++)
 document.addEventListener("keypress", keyPressed);
 /*EventListener am mainButton (Play/Stop)--> horcht auf klick*/
 document.querySelector("#buttonMain").addEventListener("click", mainButtonPressed);
-document.querySelector("#buttonRemix").addEventListener("click", doRemix);
+
 document.querySelector("#buttonRecord").addEventListener("click", toogleRecording);
+
+document.querySelector("#buttonRemix").addEventListener("click", doRemix);
 
 /***********Funktionen******************/
 /*Abspielfunktion*/
@@ -112,12 +116,14 @@ function playBeats()
     console.log("playBeats active");
     for(let i = 0; i < beats.length; i++ )
     {
-        setTimeout(function() { mainPlay(beats[i]); }, i * 250 );
+         setTimeout(function() { mainPlay(beats[i]); }, i * 250 );
     }
 }
 /*Leere Array beats und fülle es random neu*/
 function doRemix()
 {
+    document.getElementById("buttonRemix").style.transform = `rotate(${remixButtonRotation}deg)`;
+    remixButtonRotation += 360;
     beats.length = 0;
     let randomlength = getRandomNumberBetween(3, 8);
     for(let j = 0; j < randomlength; j++)

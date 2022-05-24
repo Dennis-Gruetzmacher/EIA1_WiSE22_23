@@ -1,9 +1,11 @@
 var Aufgabe09;
 (function (Aufgabe09) {
-    var activeIndex;
-    var playbackID;
-    var statePlayBeats = false;
-    var stateRecording = false;
+    /*****Variablen: Deklaration und Initialisierung******/
+    let activeIndex;
+    let playbackID;
+    let statePlayBeats = false;
+    let stateRecording = false;
+    let remixButtonRotation = 360;
     const sounds = [
         new Audio("assets/hihat.mp3"),
         new Audio("assets/kick.mp3"),
@@ -26,8 +28,8 @@ var Aufgabe09;
     document.addEventListener("keypress", keyPressed);
     /*EventListener am mainButton (Play/Stop)--> horcht auf klick*/
     document.querySelector("#buttonMain").addEventListener("click", mainButtonPressed);
-    document.querySelector("#buttonRemix").addEventListener("click", doRemix);
     document.querySelector("#buttonRecord").addEventListener("click", toogleRecording);
+    document.querySelector("#buttonRemix").addEventListener("click", doRemix);
     /***********Funktionen******************/
     /*Abspielfunktion*/
     function mainPlay(activeIndex) {
@@ -94,6 +96,8 @@ var Aufgabe09;
     }
     /*Leere Array beats und fülle es random neu*/
     function doRemix() {
+        document.getElementById("buttonRemix").style.transform = `rotate(${remixButtonRotation}deg)`;
+        remixButtonRotation += 360;
         beats.length = 0;
         let randomlength = getRandomNumberBetween(3, 8);
         for (let j = 0; j < randomlength; j++) {

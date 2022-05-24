@@ -60,6 +60,10 @@ body
     color: #ffffff;
     font-size: 70px;
 }
+#buttonRemix
+{
+    transition: all 1s ease-in-out;
+}
 @media only screen and (max-width: 600px) {
     .pad 
     {
