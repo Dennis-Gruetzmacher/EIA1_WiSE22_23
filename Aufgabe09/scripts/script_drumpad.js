@@ -31,7 +31,7 @@ var Aufgabe09;
     /***********Funktionen******************/
     /*Abspielfunktion*/
     function mainPlay(activeIndex) {
-        sounds[activeIndex].play(); /*Spiele die Sounddatei des aktiven Index ab*/
+        sounds[activeIndex].play(); /*Spiele die Sounddatei des aktiven Index im Array sounds[] ab*/
     }
     /*Pad clicked*/
     function padClicked() {
