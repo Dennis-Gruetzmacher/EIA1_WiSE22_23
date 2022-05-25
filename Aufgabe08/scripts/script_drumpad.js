@@ -37,7 +37,9 @@ var Aufgabe08;
     }
     /*Funktion welche nach Tastendruck einen Ton abspielt */
     function playSamplebyKeys(pressed) {
+        /*Prüft ob die richtige Taste (0 - 9) gedrückt wurde */
         if (checkPressedKey(pressed.key) == true) {
+            /*gedrückte taste -1 = activeIndex ... siehe ID im html */
             activeIndex = String((pressed.key) - 1);
             sounds[activeIndex].play();
         }
@@ -45,7 +47,7 @@ var Aufgabe08;
             return;
         }
     }
-    /*repeatBeats wiederholt die Funktion pla<Beats jede Sekunde ins unendliche */
+    /*repeatBeats wiederholt die Funktion playBeats jede Sekunde ins unendliche */
     function repeatBeats() {
         clearInterval(playbackID); /*stoppe einen eventuell bereits bestehenden Interval
                                     --> verhindert das die beats mehrfach gleichzeitig abgespielt werden. */
@@ -58,7 +60,7 @@ var Aufgabe08;
             setTimeout(function () { sounds[beats[i]].play(); }, i * 250);
         }
     }
-    /*Funktion checkPressedKey prüft ob die gdrückte Taste zwischen 1 und 9 liegt und übergibt entsprechend
+    /*Funktion checkPressedKey prüft ob die gedrückte Taste zwischen 1 und 9 liegt und übergibt entsprechend
     "true" oder "false" */
     function checkPressedKey(activeKey) {
         for (let i = 1; i < 10; i++) {
