@@ -4,7 +4,7 @@ namespace Aufgabe09 //Namespace definiert
 /*****************************************************/
 let activeIndex: number; //AktiverIndex zum Abspielen der Sounds
 let playbackID: number; //vorbereitet zur Übergabe der PlaybackID von setInterval()
-let statePlayBeats: boolean = false; //Status des Playbacks des vrobereiteten Beats
+let statePlayBeats: boolean = false; //Status des Playbacks des vorbereiteten Beats
 let stateRecording: boolean = false; //Status der Aufnahme
 let remixButtonRotation: number = 360; //Rotationswert für die Animation des Remix-Buttons
 /*Array der Sounddateien*/

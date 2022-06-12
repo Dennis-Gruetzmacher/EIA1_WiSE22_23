@@ -4,7 +4,7 @@ var Aufgabe09;
     /*****************************************************/
     let activeIndex; //AktiverIndex zum Abspielen der Sounds
     let playbackID; //vorbereitet zur Übergabe der PlaybackID von setInterval()
-    let statePlayBeats = false; //Status des Playbacks des vrobereiteten Beats
+    let statePlayBeats = false; //Status des Playbacks des vorbereiteten Beats
     let stateRecording = false; //Status der Aufnahme
     let remixButtonRotation = 360; //Rotationswert für die Animation des Remix-Buttons
     /*Array der Sounddateien*/
