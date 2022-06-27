@@ -17,7 +17,6 @@ document.getElementById("newtodo").addEventListener("keyup", addTask); //Eventli
 /********************************Funktionen***************************************/
 /*********************************************************************************/
 
-
 function addTask(key)
 {
     if (key.keyCode === 13) //Prüft ob "ENTER" Taste gedrückt wurde
