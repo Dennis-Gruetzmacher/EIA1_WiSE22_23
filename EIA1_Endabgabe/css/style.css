@@ -1,0 +1,164 @@
+*
+{
+    padding: 0px;
+    margin: 0px;
+}
+body
+{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: default;
+}
+header
+{
+    background: #a6a6a6;
+    position: relative;
+    height: 100px;
+}
+main
+{
+    position: relative;
+    height: 425px;
+}
+footer
+{
+    position: relative;
+    height:75px;
+    background: #797979;
+}
+footer p
+{
+    color: #2b2b2b;
+    font-size: 24px;
+}
+.progressBarElement
+{
+    display: inline-block;
+    height: 10px;
+    width: 15px;
+    background: #575757;
+    border-radius: 5px;;
+    margin: 1px;
+}
+.mainContainer
+{
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 600px;
+    max-height: 600px;
+    margin: auto;
+    background: #98cec9;
+    
+}
+.mainDivMenu1
+{
+    background: #008a78;
+    position: absolute;
+    top: 0;
+    height: 0;
+    min-width: 300px;
+    max-width: 300px;
+    z-index: 1;
+    transition: opacity 1s, height 1s;
+}    
+.menuButton
+{
+    position: relative;
+    display: inline-block;
+    border-radius: 5px;
+    margin:5px;
+    top: 25%;
+    transform: translateY(-50%);
+    background: #00576d;
+    height: 35px;
+    width: 75px;
+    color: #ffffff;
+    transition: opacity 2s, background 0.5s;
+    opacity: 0;
+    z-index: 2;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 35px;
+}
+.menuButton:hover
+{
+    background: #00b3df; 
+}
+.menuDivText
+{
+    position: relative;
+    background: #fff;
+    height: 25px;
+    line-height: 25px;
+    margin: 20px;
+    top: 25%;
+    border-radius: 5px;
+    transform: translateY(-50%);
+    transition: opacity 2s;
+    opacity: 1;
+}
+
+.generalGameArea
+{
+    position: relative;
+    height: 405px;
+    background: #98cec9;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.subGameArea
+{
+    position:relative;
+    margin: 5px;
+    border-radius: 10px;
+    top: 0;
+}
+.upperGameArea
+{
+    height: 125px;
+    background: #00bd97;
+}
+.centralGameArea
+{
+    height: 125px;
+    background: #00918f;
+}
+.lowerGameArea
+{
+    height: 150px;
+    background: #00d1cd;
+}
+.germanWord
+{
+    display:inline-block;
+    background: #ff0000;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 5px;    
+}
+.foreignWord
+{
+    display:inline-block;
+    background: #0000ff;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 5px;
+}
+.solvedWord
+{
+    display:inline-block;
+    background: #00ff77;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 5px;
+}
+.newGameButton
+{
+    position: relative;
+    display:inline-block;
+    background: #006e34;
+    border-radius: 5px;
+    padding: 25px;
+    top: 25%;
+    transform: translateY(-50%);
+}
