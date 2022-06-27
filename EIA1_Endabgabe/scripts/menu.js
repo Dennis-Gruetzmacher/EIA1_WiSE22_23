@@ -5,6 +5,7 @@ let globalDifficultySize = 0; //Anzahl der zu erledigenden Sätze je nach Schwie
 let globalPoints = 0; //Punktestand
 let globalProgress = 0; //Gesamtfortschritt => Abgearbeitete Sätze
 let globalCurrentSentenceProgress = 0; //Fortschritt im lösen des aktuellen Satzes
+/*****Übungssatz-Objekte****************/
 let sentence1 = {
     length: 4,
     used: false,
@@ -45,10 +46,58 @@ let sentence5 = {
     ukrainian: ["Luka,", "ya", "tviy", "bat'", "ko"],
     german: ["Luke,", "ich", "bin", "dein", "Vater."]
 };
-let globalAllSentences = [sentence1, sentence2, sentence3, sentence4, sentence5]; //Array aller Satz-Objekte im Spiel
+let sentence6 = {
+    length: 5,
+    used: false,
+    cleared: false,
+    spanish: ["Houston", "tene", "mos", "un", "problema"],
+    ukrainian: ["KH'", "yuston", "u", "nas'", "problema"],
+    german: ["Houston,", "wir", "haben", "ein", "Problem."]
+};
+let sentence7 = {
+    length: 4,
+    used: false,
+    cleared: false,
+    spanish: ["veo", "a", "gente", "meurta"],
+    ukrainian: ["ya", "bachu", "mertvykh", "lyudey"],
+    german: ["Ich", "sehe", "tote", "Menschen."]
+};
+let sentence8 = {
+    length: 13,
+    used: false,
+    cleared: false,
+    spanish: ["la", "vida", "es como", "una", "caja", "de bombones", "nunca", "sabes", "lo", "que", "te", "va a", "tocar"],
+    ukrainian: ["Zhyt", "tya", "yak", "korob", "ka", "tsuk", "erok", "nikoly", "ne", "znayesh", "shcho", "otry", "mayesh"],
+    german: ["Das", "Leben", "ist", "wie", "eine", "Schachtel", "Pralinen,", "man", "weiß", "nie", "was", "man", "kriegt."]
+};
+let sentence9 = {
+    length: 5,
+    used: false,
+    cleared: false,
+    spanish: ["¡", "Solo", "puede", "haber", "uno"],
+    ukrainian: ["Mozhe", "buty", "til'", "ky", "odyn"],
+    german: ["Es", "kann", "nur", "einen", "geben."]
+};
+let sentence10 = {
+    length: 10,
+    used: false,
+    cleared: false,
+    spanish: ["Le", "haré", "un", "a", "oferta", "que", "no", "podrá", "rech", "azar"],
+    ukrainian: ["Ya", "zroblyu", "yomu", "propozytsiyu", "vid", "yakoyi", "vin", "ne", "zmozhe", "vidmovytysya"],
+    german: ["Ich", "mache", "ihm", "ein", "Angebot,", "dass", "er", "nicht", "ablehnen", "kann."]
+};
+let sentence11 = {
+    length: 6,
+    used: false,
+    cleared: false,
+    spanish: ["¡Que", "la", "fuerza", "esté", "con", "usted"],
+    ukrainian: ["Nekhay", "syla", "bude", "z", "to", "boyu"],
+    german: ["Möge", "die", "Macht", "mit", "dir", "sein."]
+};
+let globalAllSentences = [sentence1, sentence2, sentence3, sentence4, sentence5, sentence6, sentence7, sentence8, sentence9, sentence10, sentence11]; //Array aller Satz-Objekte im Spiel
 let globalActiveSentences = []; // Array nach Schwierigkeit aktiven Satz-Objekte
 /*******************Setup*********************************************/
-createMenu();
+window.addEventListener("load", createMenu); //führe beim nach dem Laden der Website die funktion createMenu() aus
 /**********************Funktionen************************************/
 /**************************Menü***************************************/
 function createMenu() {
@@ -58,7 +107,7 @@ function createMenu() {
     let containerDiv = document.querySelector(".mainContainer");
     containerDiv.appendChild(newDiv);
     setTimeout(function () {
-        newDiv.style.height = "525px";
+        newDiv.style.height = "530px";
     }, 10);
     console.log("Menu div fertig");
     setTimeout(function () {
@@ -175,6 +224,12 @@ function startGame() {
     createProgressBar();
     updateProgressBar();
     createGameSentencesPool();
+    runGame();
+}
+function runGame() {
+    clearGameAreas();
+    updateProgressBar();
+    checkForEndstate();
     createGermanSentence(globalActiveSentences[globalProgress]);
     createForeignSentence(globalActiveSentences[globalProgress]);
     shuffleForeignSentence();
@@ -202,18 +257,8 @@ function updateProgressBar() {
         }
     }
 }
-/*
-function testProgressBar()
-{
-    if(globalProgress == globalDifficultySize)
-    {
-        return;
-    }
-    globalProgress++;
-    updateProgressBar();
-}*/
 function createGameSentencesPool() {
-    while (globalActiveSentences.length <= 2) {
+    while (globalActiveSentences.length < globalDifficultySize) {
         let shiftingSentence = globalAllSentences[getRandomNumberBetween(0, (globalAllSentences.length - 1))];
         console.log(shiftingSentence);
         if (shiftingSentence.used == false) {
@@ -221,7 +266,7 @@ function createGameSentencesPool() {
             shiftingSentence.used = true;
         }
         else {
-            continue;
+            continue; //Führe die nächste Iteration der Schleife aus
         }
     }
     console.log(globalActiveSentences);
@@ -240,7 +285,12 @@ function createForeignSentence(currentSentence) {
     let activeGameArea = document.querySelector(".lowerGameArea");
     for (let i = 0; i < currentSentence.length; i++) {
         let newWordDiv = document.createElement("div");
-        newWordDiv.setAttribute("id", globalLanguageString + "-word-" + i);
+        if (i < 10) {
+            newWordDiv.setAttribute("id", globalLanguageString + "-word-0" + i);
+        }
+        else {
+            newWordDiv.setAttribute("id", globalLanguageString + "-word-" + i);
+        }
         newWordDiv.classList.add("foreignWord");
         switch (globalLanguageString) {
             case "Spanisch":
@@ -262,7 +312,7 @@ function shuffleForeignSentence() {
 }
 function checkWord() {
     let currentWord = document.querySelector(".foreignWord:hover");
-    let currentWordID = currentWord.id.slice(-1);
+    let currentWordID = currentWord.id.slice(-2);
     if (parseInt(currentWordID) == globalCurrentSentenceProgress) {
         globalPoints++;
         updatePoints();
@@ -273,7 +323,7 @@ function checkWord() {
     else {
         globalPoints--;
         updatePoints();
-        checkForEndOfGame();
+        checkForEndstate();
     }
 }
 function updatePoints() {
@@ -289,21 +339,52 @@ function moveCorrectWord(activeWord) {
     activeWord.classList.remove("foreignWord");
 }
 function checkForEndOfSentence() {
-}
-function checkForEndOfGame() {
-    if (globalPoints < 0) {
-        let activeArea = document.querySelector(".generalGameArea");
-        let main = document.querySelector("main");
-        activeArea.remove();
-        let newText = document.createElement("h2");
-        newText.innerHTML = "Das war leider nichts! Versuch es doch einfach nochmal.";
-        main.appendChild(newText);
-        let newButtonDiv = document.createElement("div");
-        newButtonDiv.classList.add("newGameButton");
-        newButtonDiv.innerHTML = "Start a new Game";
-        main.appendChild(newButtonDiv);
-        newButtonDiv.addEventListener("click", newGame);
+    if (globalCurrentSentenceProgress == globalActiveSentences[globalProgress].length) {
+        globalActiveSentences[globalProgress].cleared = true;
+        globalCurrentSentenceProgress = 0;
+        globalProgress++;
+        runGame();
     }
+    else {
+        return;
+    }
+}
+function clearGameAreas() {
+    let gameAreaTop = document.querySelector(".upperGameArea");
+    let gameAreaMiddle = document.querySelector(".centralGameArea");
+    let gameAreaBottom = document.querySelector(".lowerGameArea");
+    removeAllChildren(gameAreaTop);
+    removeAllChildren(gameAreaMiddle);
+    removeAllChildren(gameAreaBottom);
+}
+function removeAllChildren(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+function checkForEndstate() {
+    if (globalPoints < 0) {
+        createEndGameScreen("Das war leider nichts! Versuch es doch einfach nochmal.");
+    }
+    else if (globalProgress == globalDifficultySize) {
+        createEndGameScreen("Super! Du hast es geschafft.");
+    }
+    else {
+        return;
+    }
+}
+function createEndGameScreen(endGameText) {
+    let activeArea = document.querySelector(".generalGameArea");
+    let main = document.querySelector("main");
+    activeArea.remove();
+    let newText = document.createElement("h2");
+    newText.innerHTML = endGameText;
+    main.appendChild(newText);
+    let newButtonDiv = document.createElement("div");
+    newButtonDiv.classList.add("newGameButton");
+    newButtonDiv.innerHTML = "Start a new Game";
+    main.appendChild(newButtonDiv);
+    newButtonDiv.addEventListener("click", newGame);
 }
 function newGame() {
     location.reload(); // lädt die Website neu

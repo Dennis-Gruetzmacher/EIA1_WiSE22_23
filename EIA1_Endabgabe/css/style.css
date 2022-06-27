@@ -130,27 +130,39 @@ footer p
 }
 .germanWord
 {
+    position: relative;
     display:inline-block;
-    background: #ff0000;
+    background: #006e6b;
     margin: 2px;
     padding: 3px;
     border-radius: 5px;    
+    font-size: 24;
+    top: 25%;
+    transform: translateY(-50%);
 }
 .foreignWord
 {
+    position: relative;
     display:inline-block;
-    background: #0000ff;
+    background: #005f57;
     margin: 2px;
     padding: 3px;
     border-radius: 5px;
+    font-size: 24;
+    top: 25%;
+    transform: translateY(-50%);
 }
 .solvedWord
 {
+    position: relative;
     display:inline-block;
-    background: #00ff77;
+    background: #00a9ac;
     margin: 2px;
     padding: 3px;
     border-radius: 5px;
+    font-size: 24;
+    top: 25%;
+    transform: translateY(-50%);
 }
 .newGameButton
 {
