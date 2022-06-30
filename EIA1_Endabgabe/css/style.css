@@ -14,6 +14,9 @@ header
     background: #a6a6a6;
     position: relative;
     height: 100px;
+    border-bottom-style: inset;
+    border-bottom-width: 2px;
+    border-color: #2b2b2b;
 }
 main
 {
@@ -25,6 +28,9 @@ footer
     position: relative;
     height:75px;
     background: #797979;
+    border-top-style: inset;
+    border-top-width: 2px;
+    border-color: #2b2b2b;
 }
 footer p
 {
@@ -112,11 +118,14 @@ footer p
     margin: 5px;
     border-radius: 10px;
     top: 0;
+    box-shadow: 2px 2px 5px #006e6b;
+
 }
 .upperGameArea
 {
     height: 125px;
     background: #00bd97;
+
 }
 .centralGameArea
 {
@@ -139,6 +148,9 @@ footer p
     font-size: 24;
     top: 25%;
     transform: translateY(-50%);
+    box-shadow: 2px 2px 5px #004846;
+    transition: all 1s;
+    opacity: 0;
 }
 .foreignWord
 {
@@ -151,6 +163,13 @@ footer p
     font-size: 24;
     top: 25%;
     transform: translateY(-50%);
+    box-shadow: 2px 2px 5px #004846;
+    transition: all 1s;
+    opacity: 0;
+}
+.foreignWord:hover
+{
+    background: #009589;
 }
 .solvedWord
 {
@@ -163,6 +182,9 @@ footer p
     font-size: 24;
     top: 25%;
     transform: translateY(-50%);
+    box-shadow: 2px 2px 5px #004846;
+    transition: all 1s;
+    opacity: 0;
 }
 .newGameButton
 {
@@ -173,4 +195,9 @@ footer p
     padding: 25px;
     top: 25%;
     transform: translateY(-50%);
+    transition: all 0.5s;
+}
+.newGameButton:hover
+{
+    background: #009244;
 }
