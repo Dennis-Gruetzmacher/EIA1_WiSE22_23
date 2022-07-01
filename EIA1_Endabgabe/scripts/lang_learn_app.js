@@ -1,3 +1,30 @@
+/*Dennis Grützmacher*/
+/*MKB 1 A*/
+/*Matrikel-Nr: 271246*/
+/*Übersicht des Programms*/
+/*
+Bei Laden der Website wird uber startUp() das Starmenü erzeugt und gefüllt.
+Der Nutzer wählt erst die Sprache (setLanguage() --> zeigt gewählte Sprache auch im header an)
+und danach die Schwierigkeit (setDifficulty() --> zeigt die gewählte Schwierigkeit auch im header an).
+Danach wird startGame() ausgeführt und erzeugt den Fortschrittsbalken (createProgressBar()) und
+aktualisiert diesen auch gleich (updateProgressBar()). Dann wird der zufällige Pool der im aktuellen Spiel genutzten
+Satz-Objekte erstellt (createGameSentencesPool()). Danach wird runGame() ausgeführt.
+runGame() prüft ob das Spiel zu Ende ist (checkEndState()). clearGame Areas() leert den Spielbereich von allen
+alten Elementen. Dann wird nochmal der Fortschrittsbalken aktualisiert (updarteProgressBar()).
+Es wird geprüft ob das Spiel noch läuft: Wenn ja wird ein Deutscher Satz in den Spielbereich geschrieben
+(createGermanSentence()), danach wird in der gewählten Fremdsprache ein Testsatz in den Testbreich geschrieben
+(createForeignSentence()). Diesem Testsatz werden je nach Schwierigkeit eine variable Anzahl an zufälligen
+Falschen Wörtern hinzugefügt (createFakeWordsPool(); addFakeWords(); clearActiveFakeWordsPool()).
+Hier "wartet" das Spiel dann auf Nutzeringabe durch klicken der Fremdwörter. Dies ruft checkWord() auf,
+welche prüft ob das geklickte Wort richtig oder falsch ist.
+Wenn falsch wird ein Punkt abgezogen, die Punkteanzeige
+aktualisiert und geprüft ob das Spiel damit zu Ende ist.
+Wenn richtig wird ein Punkt addiert, Punkteanzeige aktualisiert und geprüft ob der aktuelle Satz zu Ende ist.
+Der Nutzer klickt solange Fremdwörter bis entweder der Satz zu Ende ist (--> runGame() wird aufgerufen) oder
+das Spiel endet. Dann wird geprüft ob gewonnen oder velroren wurde und entsprechend der Endbildschirm mit Punktestand
+erstellt. Auf dem Endbilschirm gibt es einen Button ,welcher die Website neulädt und das Spiel dmait wieder startet.
+*/
+/*!Start Skript!*/
 /*******************Variablen und Konstanten***********************************/
 /*Alle global zugänglichen Variablen werden hier deklariert und initialisiert*/
 let globalLanguageString = ""; //String der ausgewählten Sprache
