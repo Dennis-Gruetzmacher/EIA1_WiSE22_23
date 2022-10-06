@@ -37,7 +37,7 @@
 		"no-var-requires": false,
 		"no-conditional-assignment": true,
 		"no-shadowed-variable": false,
-		"one-line": [false, "check-open-brace", "check-catch", "check-whitespace"],
+		"one-line": [true, "check-open-brace", "check-catch", "check-whitespace"],
 		"quotemark": [true, "double"],
 		"radix": false,
 		"semicolon": true,
