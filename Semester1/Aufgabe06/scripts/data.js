@@ -1,3 +1,4 @@
+"use strict";
 /***Namespace****/
 var Aufgabe06;
 (function (Aufgabe06) {

@@ -1,3 +1,4 @@
+"use strict";
 var Aufgabe09;
 (function (Aufgabe09) {
     /*****Variablen und Konstanten: Deklaration und Initialisierung******/

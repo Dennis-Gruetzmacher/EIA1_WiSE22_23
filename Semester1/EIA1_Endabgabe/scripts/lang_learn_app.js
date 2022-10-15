@@ -1,3 +1,4 @@
+"use strict";
 /*Dennis Grützmacher*/
 /*MKB 1 A*/
 /*Matrikel-Nr: 271246*/
