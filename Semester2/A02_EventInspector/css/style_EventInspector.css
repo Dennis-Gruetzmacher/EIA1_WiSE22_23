@@ -1,0 +1,58 @@
+*
+{
+    padding: 0px;
+    margin:0px;
+}
+body
+{
+    background: #969696;
+    cursor: default;
+}
+div
+{
+    position: relative;
+    text-align: center;
+    display:inline-block;
+    margin:5px;
+    height: 400px;
+    width: 400px;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+
+#div0
+{
+    background: #367d78;
+}
+
+#div1
+{
+    background: #68b5b0;
+}
+span
+{
+    position: fixed;
+    height: 75px;
+    width: auto;
+    background: #c0eaec;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #2a2965;
+    border-radius: 3px;
+}
+button
+{
+    position: absolute;
+    background: #2a2965;
+    height: 50px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+
