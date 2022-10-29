@@ -14,7 +14,7 @@ namespace ShoppingHelper
         for (let i: number = 1; i < 4; i++ )
         {
             document.getElementById("button_status_item_" + i).addEventListener("click", switchStatusEntry);
-            document.getElementById("trash_button_item_" + i).addEventListener("click", logDeleteEntry);
+            document.getElementById("button_trash_item_" + i).addEventListener("click", logDeleteEntry);
         }
             
     }
@@ -30,7 +30,7 @@ namespace ShoppingHelper
 
     function switchStatusEntry(): void 
     {
-        console.log("Status des Items wird durchgewechselt von: Noch offen -> Im Wagen -> Eingekauft, wieder zu Noch Offen");
+        console.log("Status des Items wird durchgewechselt von: Noch offen -> Im Wagen -> Eingekauft -> wieder zu Noch Offen");
     }
 
 
