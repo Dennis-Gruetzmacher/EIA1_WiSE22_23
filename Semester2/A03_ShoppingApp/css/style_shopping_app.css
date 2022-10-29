@@ -1,0 +1,109 @@
+*
+{
+    padding:0;
+    margin:0;
+}
+body
+{
+    background: #7ad5d0;
+    font-size: large;
+    color:#023636;
+}
+#app_container
+{
+    width: 400px;
+    position: relative;
+    margin: auto;
+    border: solid;
+    border-width: 3px;
+    border-color:#023636;
+    background: #beeeec;
+}
+#title_space
+{
+    text-align: center;
+    margin: 5px;
+}
+#control_space
+{
+    border-top:2px solid #023636;
+    border-bottom:2px solid #023636;
+}
+.element_control_space
+{
+    display: inline-block;
+    font-size: larger;
+}
+#add_newItem 
+{
+    width: 50px;
+    height: 50px;
+    font-size: xx-large;
+    margin: 10px;
+    color: #023636;
+    border: none;
+}
+.empty
+{
+    height: 15px;
+    border-bottom: 2px dotted #023636;
+}
+#list_space
+{
+    height: auto;
+    margin-bottom: 15px;
+}
+.item_box
+{
+    display: grid;
+    grid-template-columns: 100px auto 100px;
+    grid-template-rows: auto 25px auto 25px;
+    row-gap: 5px;
+    border-bottom: 2px dotted #023636;
+}
+.object
+{
+    grid-column: 1;
+    grid-row: 1;
+    font-size: larger;
+    font-weight: bold;
+}
+.date
+{
+    grid-column: 3;
+    grid-row: 1;
+    font-size: large;
+}
+.amount_item
+{
+    grid-column: 1;
+    grid-row: 2;
+}
+.comment
+{
+    grid-column: 1/4;
+    grid-row: 3;
+    width: 350px;
+    margin: auto;
+    resize: vertical;
+}
+.fa-check, .fa-cart-shopping, .fa-circle
+{
+    grid-column: 1;
+    grid-row: 4;
+    margin-left: 5px;
+}
+.status_item
+{
+    grid-column: 2;
+    grid-row: 4;
+    text-align: center;
+    font-weight: bold;
+}
+.fa-trash
+{
+    grid-column: 3;
+    grid-row: 4;
+    text-align: right;
+    margin-right: 5px;
+}
