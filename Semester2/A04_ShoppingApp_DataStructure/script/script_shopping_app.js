@@ -19,12 +19,15 @@ var A04_ShoppingHelper;
         newItemPanel.setAttribute("style", "display:inline-block;");
     }
     function addNewItem() {
-        A04_ShoppingHelper.destroyContent(A04_ShoppingHelper.shoppingList);
         let newFormInput = document.getElementById("InputForm");
         let newInputData = new FormData(newFormInput);
         console.log(newInputData.get("product"));
         console.log(newInputData.get("quantity"));
         console.log(newInputData.get("comment"));
+        if (newInputData.get("product") == "" || newInputData.get("quantity") < 1) {
+            return;
+        }
+        A04_ShoppingHelper.destroyContent(A04_ShoppingHelper.shoppingList);
         let currentDate = new Date();
         let correctDate = currentDate.getDate() + "." + currentDate.getMonth() + "." + currentDate.getFullYear();
         let newItem = {

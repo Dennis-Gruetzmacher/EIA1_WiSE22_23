@@ -1,9 +1,10 @@
-"use strict";
-var A04_ShoppingHelper;
-(function (A04_ShoppingHelper) {
-    function generateContent(_shoppingList) {
-        let listSpace = document.getElementById("list_space");
-        for (let i = 0; i < _shoppingList.Liste.length; i++) {
+namespace A04_ShoppingHelper
+{
+    export function generateContent(_shoppingList: ShoppingList): void
+    {
+        let listSpace: HTMLElement = document.getElementById("list_space");
+        for( let i: number = 0; i < _shoppingList.Liste.length; i++)
+        {
             let newProductDiv = document.createElement("div");
             newProductDiv.classList.add("item_box");
             newProductDiv.setAttribute("id", "item-" + i);
@@ -14,7 +15,7 @@ var A04_ShoppingHelper;
             newProductDiv.appendChild(newProductName);
             let newPurchaseDate = document.createElement("p");
             newPurchaseDate.classList.add("date");
-            newPurchaseDate.innerHTML = "zuletzt am " + _shoppingList.Liste[i].lastPurchase;
+            newPurchaseDate.innerHTML = "zuletzt am "+ _shoppingList.Liste[i].lastPurchase;
             newProductDiv.appendChild(newPurchaseDate);
             let newAmount = document.createElement("input");
             newAmount.setAttribute("type", "number");
@@ -51,47 +52,65 @@ var A04_ShoppingHelper;
             newTrashButton.addEventListener("click", deleteItem);
         }
     }
-    A04_ShoppingHelper.generateContent = generateContent;
-    ;
-    function destroyContent(_shoppingList) {
-        for (let i = 0; i < _shoppingList.Liste.length; i++) {
-            let currentItemDiv = document.getElementById("item-" + i);
+
+    export function destroyContent(_shoppingList: ShoppingList): void
+    {
+        for( let i: number = 0; i < _shoppingList.Liste.length; i++)
+        {
+            let currentItemDiv: HTMLElement = document.getElementById("item-" + i);
             currentItemDiv.remove();
         }
     }
-    A04_ShoppingHelper.destroyContent = destroyContent;
-    function deleteItem() {
-        let ActiveDiv = document.getElementById("item-" + getButtonID());
-        ActiveDiv.remove();
+
+    function deleteItem(): void
+    {
+        let activeID: number = parseInt(getButtonID());
+        destroyContent(shoppingList);
+        shoppingList.Liste.splice(activeID, 1);
+        generateContent(shoppingList);
     }
-    ;
-    function updateItem() {
-        let newAmountString = document.getElementById("amountField_" + getButtonID()).value;
-        console.log(newAmountString);
-        let newCommentString = document.getElementById("commentTextarea_" + getButtonID()).value;
-        console.log(newCommentString);
+
+    function updateItem(): void
+    {
+        let newAmountString: string = document.getElementById("amountField_" + getButtonID()).value;
+        let newCommentString: string = document.getElementById("commentTextarea_" + getButtonID()).value;
+        shoppingList.Liste[getButtonID()].quantity = parseInt(newAmountString);
+        shoppingList.Liste[getButtonID()].comment = newCommentString;
+        destroyContent(shoppingList);
+        generateContent(shoppingList);
     }
-    function changeItemStatus() {
-        let ActiveButtonID = document.querySelector(".fa-solid:hover").getAttribute("id");
-        let ActiveButton = document.getElementById(ActiveButtonID);
-        if (ActiveButton.classList.contains("fa-circle")) {
+
+    function changeItemStatus(): void
+    {
+        let ActiveButton: HTMLElement = document.getElementById("StatusButtonId_" + getButtonID());
+        let ActiveID: number = parseInt(getButtonID());
+        if (shoppingList.Liste[ActiveID].inCart == false && shoppingList.Liste[ActiveID].bought == false)
+        {
             ActiveButton.classList.add("fa-cart-shopping");
             ActiveButton.classList.remove("fa-circle");
+            shoppingList.Liste[ActiveID].inCart = true;
         }
-        else if (ActiveButton.classList.contains("fa-cart-shopping")) {
+        else if (shoppingList.Liste[ActiveID].inCart == true && shoppingList.Liste[ActiveID].bought == false)
+        {
             ActiveButton.classList.add("fa-check");
             ActiveButton.classList.remove("fa-cart-shopping");
+            shoppingList.Liste[ActiveID].bought = true;
         }
-        else {
+        else
+        {
             ActiveButton.classList.add("fa-circle");
             ActiveButton.classList.remove("fa-check");
+            shoppingList.Liste[ActiveID].inCart = false;
+            shoppingList.Liste[ActiveID].bought = false;
         }
+
     }
-    function getButtonID() {
-        let activeItem = document.querySelector(".button:hover").getAttribute("id");
-        let activeItemIDString = activeItem.split("_");
-        let activeID = activeItemIDString[1];
+
+    function getButtonID(): string
+    {
+        let activeItem: string = document.querySelector(".button:hover").getAttribute("id");
+        let activeItemIDString: string[] = activeItem.split("_");
+        let activeID: string = activeItemIDString[1];
         return activeID;
     }
-})(A04_ShoppingHelper || (A04_ShoppingHelper = {}));
-//# sourceMappingURL=generateContent.js.map
+}

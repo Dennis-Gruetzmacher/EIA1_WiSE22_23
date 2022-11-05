@@ -22,12 +22,17 @@ namespace A04_ShoppingHelper
     }
     function addNewItem(): void
     {
-        destroyContent(shoppingList);
+        
         let newFormInput: HTMLElement = document.getElementById("InputForm");
         let newInputData = new FormData(newFormInput);
         console.log(newInputData.get("product"));
         console.log(newInputData.get("quantity"));
         console.log(newInputData.get("comment"));
+        if(newInputData.get("product") == "" || newInputData.get("quantity") < 1)
+        {
+            return;
+        }
+        destroyContent(shoppingList);
         let currentDate: Date = new Date();
         let correctDate: string = currentDate.getDate() + "." + currentDate.getMonth() + "." + currentDate.getFullYear();
         let newItem: ShoppingItem =
@@ -43,4 +48,4 @@ namespace A04_ShoppingHelper
         generateContent(shoppingList);
         newItemPanel.setAttribute("style", "display:none;");
     }
-    
+}    

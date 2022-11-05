@@ -1,10 +1,9 @@
-namespace A04_ShoppingHelper
-{
-    export function generateContent(_shoppingList: ShoppingList): void
-    {
-        let listSpace: HTMLElement = document.getElementById("list_space");
-        for( let i: number = 0; i < _shoppingList.Liste.length; i++)
-        {
+"use strict";
+var A04_ShoppingHelper;
+(function (A04_ShoppingHelper) {
+    function generateContent(_shoppingList) {
+        let listSpace = document.getElementById("list_space");
+        for (let i = 0; i < _shoppingList.Liste.length; i++) {
             let newProductDiv = document.createElement("div");
             newProductDiv.classList.add("item_box");
             newProductDiv.setAttribute("id", "item-" + i);
@@ -15,7 +14,7 @@ namespace A04_ShoppingHelper
             newProductDiv.appendChild(newProductName);
             let newPurchaseDate = document.createElement("p");
             newPurchaseDate.classList.add("date");
-            newPurchaseDate.innerHTML = "zuletzt am "+ _shoppingList.Liste[i].lastPurchase;
+            newPurchaseDate.innerHTML = "zuletzt am " + _shoppingList.Liste[i].lastPurchase;
             newProductDiv.appendChild(newPurchaseDate);
             let newAmount = document.createElement("input");
             newAmount.setAttribute("type", "number");
@@ -51,59 +50,54 @@ namespace A04_ShoppingHelper
             newUpdateItemButton.addEventListener("click", updateItem);
             newTrashButton.addEventListener("click", deleteItem);
         }
-    };
-
-    export function destroyContent(_shoppingList: ShoppingList): void
-    {
-        for( let i: number = 0; i < _shoppingList.Liste.length; i++)
-        {
-            let currentItemDiv: HTMLElement = document.getElementById("item-" + i);
+    }
+    A04_ShoppingHelper.generateContent = generateContent;
+    function destroyContent(_shoppingList) {
+        for (let i = 0; i < _shoppingList.Liste.length; i++) {
+            let currentItemDiv = document.getElementById("item-" + i);
             currentItemDiv.remove();
         }
     }
-
-    function deleteItem(): void
-    {
-        let ActiveDiv: HTMLElement = document.getElementById("item-" + getButtonID());
-        ActiveDiv.remove();
-    };
-
-    function updateItem(): void
-    {
-        let newAmountString: string = document.getElementById("amountField_" + getButtonID()).value;
-        console.log(newAmountString);
-        let newCommentString: string = document.getElementById("commentTextarea_" + getButtonID()).value;
-        console.log(newCommentString);
+    A04_ShoppingHelper.destroyContent = destroyContent;
+    function deleteItem() {
+        let activeID = parseInt(getButtonID());
+        destroyContent(A04_ShoppingHelper.shoppingList);
+        A04_ShoppingHelper.shoppingList.Liste.splice(activeID, 1);
+        generateContent(A04_ShoppingHelper.shoppingList);
     }
-
-    function changeItemStatus(): void
-    {
-        let ActiveButtonID: string = document.querySelector(".fa-solid:hover").getAttribute("id");
-        let ActiveButton: HTMLElement = document.getElementById(ActiveButtonID);
-        if (ActiveButton.classList.contains("fa-circle"))
-        {
+    function updateItem() {
+        let newAmountString = document.getElementById("amountField_" + getButtonID()).value;
+        let newCommentString = document.getElementById("commentTextarea_" + getButtonID()).value;
+        A04_ShoppingHelper.shoppingList.Liste[getButtonID()].quantity = parseInt(newAmountString);
+        A04_ShoppingHelper.shoppingList.Liste[getButtonID()].comment = newCommentString;
+        destroyContent(A04_ShoppingHelper.shoppingList);
+        generateContent(A04_ShoppingHelper.shoppingList);
+    }
+    function changeItemStatus() {
+        let ActiveButton = document.getElementById("StatusButtonId_" + getButtonID());
+        let ActiveID = parseInt(getButtonID());
+        if (A04_ShoppingHelper.shoppingList.Liste[ActiveID].inCart == false && A04_ShoppingHelper.shoppingList.Liste[ActiveID].bought == false) {
             ActiveButton.classList.add("fa-cart-shopping");
             ActiveButton.classList.remove("fa-circle");
-
+            A04_ShoppingHelper.shoppingList.Liste[ActiveID].inCart = true;
         }
-        else if (ActiveButton.classList.contains("fa-cart-shopping"))
-        {
+        else if (A04_ShoppingHelper.shoppingList.Liste[ActiveID].inCart == true && A04_ShoppingHelper.shoppingList.Liste[ActiveID].bought == false) {
             ActiveButton.classList.add("fa-check");
             ActiveButton.classList.remove("fa-cart-shopping");
+            A04_ShoppingHelper.shoppingList.Liste[ActiveID].bought = true;
         }
-        else
-        {
+        else {
             ActiveButton.classList.add("fa-circle");
             ActiveButton.classList.remove("fa-check");
+            A04_ShoppingHelper.shoppingList.Liste[ActiveID].inCart = false;
+            A04_ShoppingHelper.shoppingList.Liste[ActiveID].bought = false;
         }
-
     }
-
-    function getButtonID(): string
-    {
-        let activeItem: string = document.querySelector(".button:hover").getAttribute("id");
-        let activeItemIDString: string[] = activeItem.split("_");
-        let activeID: string = activeItemIDString[1];
+    function getButtonID() {
+        let activeItem = document.querySelector(".button:hover").getAttribute("id");
+        let activeItemIDString = activeItem.split("_");
+        let activeID = activeItemIDString[1];
         return activeID;
     }
-}
+})(A04_ShoppingHelper || (A04_ShoppingHelper = {}));
+//# sourceMappingURL=manageContent.js.map
