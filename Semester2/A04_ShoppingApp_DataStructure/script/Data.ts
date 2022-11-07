@@ -1,6 +1,6 @@
 namespace A04_ShoppingHelper
 {
-    interface ShoppingItem
+    export interface ShoppingItem
     {
         product: string;
         quantity: number;
