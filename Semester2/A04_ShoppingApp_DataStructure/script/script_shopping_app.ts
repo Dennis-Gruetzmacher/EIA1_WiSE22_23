@@ -34,7 +34,7 @@ namespace A04_ShoppingHelper
         }
         destroyContent(shoppingList);
         let currentDate: Date = new Date();
-        let wrongMonth: number = currentDate.getMonth();
+        let wrongMonth: number = parseInt(currentDate.getMonth());
         let correctDate: string = currentDate.getDate() + "." + (wrongMonth + 1)  + "." + currentDate.getFullYear();
         let newItem: ShoppingItem =
         {

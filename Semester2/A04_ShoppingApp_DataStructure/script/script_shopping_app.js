@@ -29,7 +29,7 @@ var A04_ShoppingHelper;
         }
         A04_ShoppingHelper.destroyContent(A04_ShoppingHelper.shoppingList);
         let currentDate = new Date();
-        let wrongMonth = currentDate.getMonth();
+        let wrongMonth = parseInt(currentDate.getMonth());
         let correctDate = currentDate.getDate() + "." + (wrongMonth + 1) + "." + currentDate.getFullYear();
         let newItem = {
             product: String(newInputData.get("product")),
