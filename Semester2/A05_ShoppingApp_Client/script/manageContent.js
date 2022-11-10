@@ -1,40 +1,32 @@
 "use strict";
 var A05_ShoppingHelper;
 (function (A05_ShoppingHelper) {
-    async function startGenerateContent(_url) {
-        let response = await fetch(_url);
-        console.log("Response", response);
-        let shoppingJSON = response.json();
-        let shoppingList = JSON.parse(shoppingJSON);
-        generateContent(shoppingList);
-    }
-    A05_ShoppingHelper.startGenerateContent = startGenerateContent;
     function generateContent(_shoppingList) {
         let listSpace = document.getElementById("list_space");
-        for (let i = 0; i < _shoppingList.Liste.length; i++) {
+        for (let i = 0; i < _shoppingList.List.length; i++) {
             let newProductDiv = document.createElement("div");
             newProductDiv.classList.add("item_box");
             newProductDiv.setAttribute("id", "item-" + i);
             listSpace.appendChild(newProductDiv);
             let newProductName = document.createElement("p");
             newProductName.classList.add("product");
-            newProductName.innerHTML = _shoppingList.Liste[i].product;
+            newProductName.innerHTML = _shoppingList.List[i].product;
             newProductDiv.appendChild(newProductName);
             let newPurchaseDate = document.createElement("p");
             newPurchaseDate.classList.add("date");
-            newPurchaseDate.innerHTML = "zuletzt am " + _shoppingList.Liste[i].lastPurchase;
+            newPurchaseDate.innerHTML = "zuletzt am " + _shoppingList.List[i].lastPurchase;
             newProductDiv.appendChild(newPurchaseDate);
             let newAmount = document.createElement("input");
             newAmount.setAttribute("type", "number");
             newAmount.setAttribute("min", "0");
             newAmount.setAttribute("id", "amountField_" + i);
             newAmount.classList.add("amount_item");
-            newAmount.value = _shoppingList.Liste[i].quantity;
+            newAmount.value = _shoppingList.List[i].quantity;
             newProductDiv.appendChild(newAmount);
             let newComment = document.createElement("textarea");
             newComment.classList.add("comment");
             newComment.setAttribute("id", "commentTextarea_" + i);
-            newComment.value = _shoppingList.Liste[i].comment;
+            newComment.value = _shoppingList.List[i].comment;
             newProductDiv.appendChild(newComment);
             let newStatusButton = document.createElement("i");
             newStatusButton.classList.add("fa-solid");
@@ -61,7 +53,7 @@ var A05_ShoppingHelper;
     }
     A05_ShoppingHelper.generateContent = generateContent;
     function destroyContent(_shoppingList) {
-        for (let i = 0; i < _shoppingList.Liste.length; i++) {
+        for (let i = 0; i < _shoppingList.List.length; i++) {
             let currentItemDiv = document.getElementById("item-" + i);
             currentItemDiv.remove();
         }
@@ -69,37 +61,40 @@ var A05_ShoppingHelper;
     A05_ShoppingHelper.destroyContent = destroyContent;
     function deleteItem() {
         let activeID = parseInt(getButtonID());
-        destroyContent(shoppingList);
-        shoppingList.Liste.splice(activeID, 1);
-        generateContent(shoppingList);
+        destroyContent(A05_ShoppingHelper.globalShoppingList);
+        A05_ShoppingHelper.globalShoppingList.List.splice(activeID, 1);
+        generateContent(A05_ShoppingHelper.globalShoppingList);
+        A05_ShoppingHelper.updateJSON();
     }
     function updateItem() {
         let newAmountString = document.getElementById("amountField_" + getButtonID()).value;
         let newCommentString = document.getElementById("commentTextarea_" + getButtonID()).value;
-        shoppingList.Liste[getButtonID()].quantity = parseInt(newAmountString);
-        shoppingList.Liste[getButtonID()].comment = newCommentString;
-        destroyContent(shoppingList);
-        generateContent(shoppingList);
+        A05_ShoppingHelper.globalShoppingList.List[getButtonID()].quantity = parseInt(newAmountString);
+        A05_ShoppingHelper.globalShoppingList.List[getButtonID()].comment = newCommentString;
+        destroyContent(A05_ShoppingHelper.globalShoppingList);
+        generateContent(A05_ShoppingHelper.globalShoppingList);
+        A05_ShoppingHelper.updateJSON();
     }
     function changeItemStatus() {
         let ActiveButton = document.getElementById("StatusButtonId_" + getButtonID());
         let ActiveID = parseInt(getButtonID());
-        if (shoppingList.Liste[ActiveID].inCart == false && shoppingList.Liste[ActiveID].bought == false) {
+        if (A05_ShoppingHelper.globalShoppingList.List[ActiveID].inCart == false && A05_ShoppingHelper.globalShoppingList.List[ActiveID].bought == false) {
             ActiveButton.classList.add("fa-cart-shopping");
             ActiveButton.classList.remove("fa-circle");
-            shoppingList.Liste[ActiveID].inCart = true;
+            A05_ShoppingHelper.globalShoppingList.List[ActiveID].inCart = true;
         }
-        else if (shoppingList.Liste[ActiveID].inCart == true && shoppingList.Liste[ActiveID].bought == false) {
+        else if (A05_ShoppingHelper.globalShoppingList.List[ActiveID].inCart == true && A05_ShoppingHelper.globalShoppingList.List[ActiveID].bought == false) {
             ActiveButton.classList.add("fa-check");
             ActiveButton.classList.remove("fa-cart-shopping");
-            shoppingList.Liste[ActiveID].bought = true;
+            A05_ShoppingHelper.globalShoppingList.List[ActiveID].bought = true;
         }
         else {
             ActiveButton.classList.add("fa-circle");
             ActiveButton.classList.remove("fa-check");
-            shoppingList.Liste[ActiveID].inCart = false;
-            shoppingList.Liste[ActiveID].bought = false;
+            A05_ShoppingHelper.globalShoppingList.List[ActiveID].inCart = false;
+            A05_ShoppingHelper.globalShoppingList.List[ActiveID].bought = false;
         }
+        A05_ShoppingHelper.updateJSON();
     }
     function getButtonID() {
         let activeItem = document.querySelector(".button:hover").getAttribute("id");

@@ -7,15 +7,31 @@ Quellen:
 */
 namespace A05_ShoppingHelper
 {
-    let dataJSON: string = "https://dennis-gruetzmacher.github.io/EIA2_WiSe22_23/Semester2/A05_ShoppingApp_Client/data/data.json";
-   // let dataJSON: string = "http//:localhost/Studium/S1/EAI 1/EAI1_SoSe22/Semester2/A05_ShoppingApp_Clien/data/data.json";
+    export let dataJSON: string = "https://dennis-gruetzmacher.github.io/EIA2_WiSe22_23/Semester2/A05_ShoppingApp_Client/data/data.json";
+    export let globalShoppingList: ShoppingList;
     let newItemPanel: HTMLElement = document.getElementById("new_item_panel");
     window.addEventListener("load", handleLoad);
-    function handleLoad(): void
+    async function importJSON(_url: RequestInfo): Promise<void>
+    {
+        let response: Response = await fetch(_url);
+        console.log("Response", response);
+        globalShoppingList = await response.json();
+        console.log(globalShoppingList);
+    }
+    async function handleLoad(): Promise<void>
     {
         document.getElementById("add_newItem").addEventListener("click", showNewItemArea);
         document.getElementById("Add_newItem_button").addEventListener("click", addNewItem); 
-        startGenerateContent(dataJSON); 
+        await importJSON(dataJSON);
+        generateContent(globalShoppingList); 
+    }
+    export async function updateJSON(): Promise<void>
+    {
+            let sendJSONString: string = JSON.stringify(globalShoppingList);
+            console.log(sendJSONString);
+            let query: URLSearchParams = new URLSearchParams(<any>sendJSONString);
+            await fetch("ShoppingApp.html?" + query.toString());
+            alert("JSON Datei wurde geupdated!");    
     }
     function showNewItemArea(): void 
     {        
@@ -33,7 +49,7 @@ namespace A05_ShoppingHelper
         {
             return;
         }
-        destroyContent(shoppingList);
+        destroyContent(globalShoppingList);
         let currentDate: Date = new Date();
         let wrongMonth: number = parseInt(currentDate.getMonth());
         let correctDate: string = currentDate.getDate() + "." + (wrongMonth + 1)  + "." + currentDate.getFullYear();
@@ -46,8 +62,9 @@ namespace A05_ShoppingHelper
             bought: false,
             lastPurchase: correctDate
         };
-        shoppingList.Liste.push(newItem);
-        startGenerateContent(dataJSON);
+        globalShoppingList.List.push(newItem);
+        updateJSON();
+        generateContent(globalShoppingList);
         newItemPanel.setAttribute("style", "display:none;");
     }
 }    
