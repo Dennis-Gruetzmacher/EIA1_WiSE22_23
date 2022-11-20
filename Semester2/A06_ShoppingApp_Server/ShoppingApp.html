@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style_shopping_app.css">
+    <script src="script/showContent.js" defer> </script>
+    <script src="script/manipulateContent.js" defer> </script>
+    <script src="https://kit.fontawesome.com/4287d81834.js" crossorigin="anonymous"></script>
+    <title>Shopper's Little Helper</title>
+</head>
+<body>
+    <div id="app_container">
+        <div id="title_space"><h1>Shopper's Little Helper</h1></div>
+        <div id="control_space">
+            <button class = "element_control_space" id="add_newItem"> + </button>
+            <p class = "element_control_space">Add new Item</p>
+            <div id="new_item_panel">
+                <p>Hier bitte Produktdaten eintragen</p>
+                <form id="InputForm">
+                    <input class="name_item" name ="product" placeholder="Produkt">
+                    <input type="number" class="amount_item" name="quantity" min="0">
+                    <textarea class="comment" name="comment" placeholder="zusätzliche Infos"></textarea>
+                </form>
+                <button id ="Add_newItem_button" type="button">Add new Item</button>
+            </div>
+        </div>
+        <div class="gap">
+        </div>
+        <div id="list_space">
+        </div>
+    </div>    
+</body>
+</html>
