@@ -1,4 +1,11 @@
 "use strict";
+/*
+Aufgabe: L08.1_Generative_Art
+Name: Dennis Grützmacher
+Matrikel: 271246
+Datum: 26.11.2022
+Quellen:
+*/
 var canvas_test;
 (function (canvas_test) {
     window.addEventListener("load", handleLoad);
