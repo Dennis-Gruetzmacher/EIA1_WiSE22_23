@@ -11,11 +11,11 @@ namespace A06_ShoppingHelper
     export interface ReturnedDatabaseObject
     {
         status: string; 
-        data: { [id: string]: { List: ShoppingItem[]}};
+        data: IdObject[];
     }
-    export interface ShoppingList
+    export interface IdObject
     {
-        List: ShoppingItem[];
+        [id: string]: ShoppingItem;
     }
     export interface ShoppingItem
     {
@@ -27,41 +27,35 @@ namespace A06_ShoppingHelper
         lastPurchase: string;
     }
     export let dataJSON: string = "https://webuser.hs-furtwangen.de/~gruetzma/database/?command=find&collection=ShoppingList";
-    export let globalShoppingList: ShoppingList;
+    export let globalShoppingList: IdObject[];
     export let objectIds: string[];
     let newItemPanel: HTMLElement = document.getElementById("new_item_panel");
     window.addEventListener("load", handleLoad);
     async function importJSON(_url: RequestInfo): Promise<void>
     {
+       // if (objectIds.length !== null)
+        //{
+         //   console.log(objectIds);
+          //  destroyContent(globalShoppingList);
+        //}
         let response: Response = await fetch(_url);
         console.log("Response", response);
         let newDatabaseObject: ReturnedDatabaseObject = await response.json();
+        globalShoppingList = newDatabaseObject.data;
         objectIds = Object.keys(newDatabaseObject.data);
-        console.log(objectIds);
-        for ( let i: number = 0; i < objectIds.length; i++)
-        {
-            globalShoppingList.push(newDatabaseObject.data.id);
-        }
-        console.log(globalShoppingList);
+        generateContent(globalShoppingList);
     }
     async function handleLoad(): Promise<void>
     {
         document.getElementById("add_newItem").addEventListener("click", showNewItemArea);
         document.getElementById("Add_newItem_button").addEventListener("click", addNewItem); 
         await importJSON(dataJSON);
-        generateContent(globalShoppingList); 
-    }
-    export async function updateJSON(): Promise<void>
-    {
-            let sendJSONString: string = JSON.stringify(globalShoppingList);
-            console.log(sendJSONString);
-            let query: URLSearchParams = new URLSearchParams(<any>sendJSONString);
     }
     function showNewItemArea(): void 
     {        
         newItemPanel.setAttribute("style", "display:inline-block;");
     }
-    function addNewItem(): void
+    async function addNewItem(): void
     {
         
         let newFormInput: HTMLElement = document.getElementById("InputForm");
@@ -70,7 +64,6 @@ namespace A06_ShoppingHelper
         {
             return;
         }
-        destroyContent(globalShoppingList);
         let currentDate: Date = new Date();
         let wrongMonth: number = parseInt(currentDate.getMonth());
         let correctDate: string = currentDate.getDate() + "." + (wrongMonth + 1)  + "." + currentDate.getFullYear();
@@ -83,9 +76,30 @@ namespace A06_ShoppingHelper
             bought: false,
             lastPurchase: correctDate
         };
-        globalShoppingList.List.push(newItem);
-        updateJSON();
-        generateContent(globalShoppingList);
+        let newJSONString: string = JSON.stringify(newItem);
+        await fetch("https://webuser.hs-furtwangen.de/~gruetzma/database/command=insert&collection=ShoppingList&data=" + newJSONString);
+        await importJSON(dataJSON);
+
         newItemPanel.setAttribute("style", "display:none;");
+    }
+    export async function deleteItem(): Promise<void>
+    {
+        let activeID: number = parseInt(getButtonID());
+        let activeJSONID: string = objectIds[activeID];
+        await fetch("https://webuser.hs-furtwangen.de/~gruetzma/database/?command=delete&collection=ShoppingList&id=" + activeJSONID);
+        await importJSON(dataJSON);
+    }
+
+    export async function updateItem(): void
+    {
+        let newAmountString: string = document.getElementById("amountField_" + getButtonID()).value;
+        let newCommentString: string = document.getElementById("commentTextarea_" + getButtonID()).value;
+        let newJSONString: string = "{quantity: " + newAmountString + ", comment: " + newCommentString + "}";
+        let activeID: number = parseInt(getButtonID());
+        let activeJSONID: string = objectIds[activeID];
+        await fetch("https://webuser.hs-furtwangen.de/~gruetzma/database/?command=update&collection=ShoppingList&id=" + activeJSONID + "&data=" + newJSONString);
+        await importJSON(dataJSON);
+
+
     }
 }
