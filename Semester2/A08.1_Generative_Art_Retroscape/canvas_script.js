@@ -12,6 +12,24 @@ var canvas_test;
     let distanceHorizonLines;
     let startpointMountain;
     let currentXMountain;
+    let activeMoonX;
+    let activeMoonY;
+    let ColorSpaces = [
+        ["#95A8FF", "#5536FF", "#14069C", "#10076C", "#251197"],
+        ["#B1FEB6", "#0CE800", "#176F00", "#124305", "#033E00"],
+        ["#FFA756", "#FF3900", "#AC3300", "#601D00", "#4D1100"] //red     
+    ];
+    let gradientGround;
+    let gradientSky;
+    let gradientMountains;
+    let gradientMoons;
+    let activeColorSpace;
+    let activeMoonRadius;
+    let activeCityX;
+    let activeCityY;
+    let activeCityWidth;
+    let cityBubbleHeight;
+    let activeBuildingWidth;
     function handleLoad() {
         canvas = document.querySelector("canvas");
         crc2 = canvas.getContext("2d");
@@ -25,6 +43,7 @@ var canvas_test;
         distanceGroundLinesBottom = distanceGroundLinesTop * randomBetween(3, 10);
         amountGroundLines = Math.round(crc2.canvas.width / distanceGroundLinesTop);
         distanceHorizonLines = randomBetween(20, 50);
+        activeColorSpace = randomBetween(0, 2);
     }
     function drawOnCanvas() {
         createBackground();
@@ -33,15 +52,22 @@ var canvas_test;
         createMountains();
         createHorizon();
         createGround();
+        createBubbleCity();
+        createCRT();
     }
     function createBackground() {
-        crc2.fillStyle = "#000000";
-        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        gradientSky = crc2.createLinearGradient(0, 0, 0, horizonPoint);
+        gradientSky.addColorStop(0, "#000000");
+        gradientSky.addColorStop(0.6, "#000000");
+        gradientSky.addColorStop(0.8, "#171429");
+        gradientSky.addColorStop(1, "#171429");
+        crc2.fillStyle = gradientSky;
+        crc2.fillRect(0, 0, crc2.canvas.width, horizonPoint);
     }
     function createStars() {
-        crc2.strokeStyle = "#0000FF";
-        crc2.fillStyle = "#00FFFF";
-        for (let i = 10; i < randomBetween(30, 80); i++) {
+        crc2.strokeStyle = ColorSpaces[activeColorSpace][0];
+        crc2.fillStyle = ColorSpaces[activeColorSpace][1];
+        for (let i = 10; i < randomBetween(50, 80); i++) {
             strokeStar(randomBetween(0, crc2.canvas.width), randomBetween(0, horizonPoint), randomBetween(2, 5), randomBetween(5, 8), randomBetween(1, 4));
         }
     }
@@ -62,16 +88,29 @@ var canvas_test;
     }
     function createMoons() {
         for (let i = 0; i < randomBetween(1, 5); i++) {
+            activeMoonX = randomBetween(0, crc2.canvas.width);
+            activeMoonY = randomBetween(0, horizonPoint);
+            crc2.translate(activeMoonX, activeMoonY);
+            activeMoonRadius = randomBetween(30, 150);
+            gradientMoons = crc2.createRadialGradient(0, 0, 7, activeMoonRadius, activeMoonRadius, activeMoonRadius * 2);
+            gradientMoons.addColorStop(0, ColorSpaces[activeColorSpace][1]);
+            gradientMoons.addColorStop(0.5, ColorSpaces[activeColorSpace][2]);
+            gradientMoons.addColorStop(1, ColorSpaces[activeColorSpace][3]);
             crc2.beginPath();
-            crc2.fillStyle = "#FF0000";
-            crc2.strokeStyle = "#FFFF00";
-            crc2.arc(randomBetween(0, crc2.canvas.width), randomBetween(0, horizonPoint), randomBetween(20, 150), 0, Math.PI * 2);
+            crc2.fillStyle = gradientMoons;
+            crc2.strokeStyle = ColorSpaces[activeColorSpace][3];
+            crc2.arc(0, 0, activeMoonRadius, 0, Math.PI * 2);
             crc2.fill();
             crc2.stroke();
+            crc2.resetTransform();
         }
     }
     function createMountains() {
-        for (let i = 0; i < 5; i++) {
+        gradientMountains = crc2.createLinearGradient(0, horizonPoint, 0, horizonPoint - 150);
+        gradientMountains.addColorStop(0, ColorSpaces[activeColorSpace][4]);
+        gradientMountains.addColorStop(0.5, ColorSpaces[activeColorSpace][3]);
+        gradientMountains.addColorStop(1, ColorSpaces[activeColorSpace][2]);
+        for (let i = 0; i < randomBetween(5, 10); i++) {
             crc2.beginPath();
             startpointMountain = randomBetween(-100, 900);
             crc2.moveTo(startpointMountain, horizonPoint);
@@ -82,8 +121,9 @@ var canvas_test;
             }
             crc2.lineTo(currentXMountain, horizonPoint);
             crc2.closePath();
-            crc2.fillStyle = "#00FF00";
-            crc2.strokeStyle = "#FFFF00";
+            crc2.fillStyle = gradientMountains;
+            crc2.strokeStyle = ColorSpaces[activeColorSpace][4];
+            crc2.lineWidth = 2;
             crc2.fill();
             crc2.stroke();
         }
@@ -91,19 +131,23 @@ var canvas_test;
     function createHorizon() {
         crc2.beginPath();
         crc2.rect(0, horizonPoint, crc2.canvas.width, horizonPoint);
-        crc2.fillStyle = "#0000FF";
+        gradientGround = crc2.createLinearGradient(crc2.canvas.width / 2, horizonPoint, crc2.canvas.width / 2, crc2.canvas.height);
+        gradientGround.addColorStop(0, ColorSpaces[activeColorSpace][3]);
+        gradientGround.addColorStop(0, ColorSpaces[activeColorSpace][2]);
+        gradientGround.addColorStop(1, ColorSpaces[activeColorSpace][1]);
+        crc2.fillStyle = gradientGround;
         crc2.fill();
         crc2.lineWidth = 3;
         for (let i = 0; i < 25; i++) {
             crc2.beginPath();
             crc2.moveTo(0, horizonPoint + (distanceHorizonLines * i));
             crc2.lineTo(crc2.canvas.width, horizonPoint + (distanceHorizonLines * i));
-            crc2.strokeStyle = "#FFFFFF";
+            crc2.strokeStyle = ColorSpaces[activeColorSpace][0];
             crc2.stroke();
         }
     }
     function createGround() {
-        crc2.strokeStyle = "#FFFFFF";
+        crc2.strokeStyle = ColorSpaces[activeColorSpace][0];
         for (let i = 0; i <= amountGroundLines * 2; i++) {
             crc2.beginPath();
             crc2.moveTo(vanishingPointX - (distanceGroundLinesTop * i), horizonPoint);
@@ -114,6 +158,115 @@ var canvas_test;
             crc2.beginPath();
             crc2.moveTo(vanishingPointX + (distanceGroundLinesTop * i), horizonPoint);
             crc2.lineTo(750 + (distanceGroundLinesBottom * i), crc2.canvas.height);
+            crc2.stroke();
+        }
+    }
+    function createBubbleCity() {
+        for (let i = 0; i < randomBetween(1, 2); i++) {
+            if (activeCityX == null) {
+                activeCityX = randomBetween(100, crc2.canvas.width - 100);
+                activeCityY = randomBetween(horizonPoint, horizonPoint + 200);
+            }
+            else {
+                if (activeCityX > 750) {
+                    activeCityX = randomBetween(100, crc2.canvas.width - 900);
+                    activeCityY = randomBetween(horizonPoint, horizonPoint + 200);
+                }
+                else {
+                    activeCityX = randomBetween(900, crc2.canvas.width - 100);
+                    activeCityY = randomBetween(horizonPoint, horizonPoint + 200);
+                }
+            }
+            activeCityWidth = randomBetween(100, 250);
+            crc2.translate(activeCityX, activeCityY);
+            createCenterTowers(activeCityWidth);
+            createMiddleTowers(activeCityWidth);
+            createFrontTowers(activeCityWidth);
+            createBubble(activeCityWidth);
+            createFoundation(activeCityWidth);
+            crc2.resetTransform();
+        }
+    }
+    function createCenterTowers(_cityWidth) {
+        cityBubbleHeight = randomBetween(30, 180);
+        crc2.save();
+        for (let i = 0; i < randomBetween(2, 6); i++) {
+            crc2.save();
+            crc2.translate(randomBetween(Math.round((-_cityWidth / 6)), Math.round((_cityWidth / 8))), 0);
+            activeBuildingWidth = randomBetween(2, 8);
+            crc2.beginPath();
+            crc2.rect(activeBuildingWidth, 0, activeBuildingWidth * 2, Math.round(-(cityBubbleHeight - 20)));
+            crc2.closePath();
+            crc2.fillStyle = ColorSpaces[activeColorSpace][0];
+            crc2.fill();
+            crc2.strokeStyle = ColorSpaces[activeColorSpace][4];
+            crc2.stroke();
+            crc2.restore();
+        }
+        crc2.restore();
+    }
+    function createMiddleTowers(_cityWidth) {
+        crc2.save();
+        for (let i = 0; i < randomBetween(15, 50); i++) {
+            crc2.save();
+            crc2.translate(randomBetween((-_cityWidth / 4), (_cityWidth / 4)), 0);
+            activeBuildingWidth = randomBetween(2, 8);
+            crc2.beginPath();
+            crc2.rect(activeBuildingWidth, 0, activeBuildingWidth * 2, Math.round(-(cityBubbleHeight / 2)));
+            crc2.closePath();
+            crc2.fillStyle = ColorSpaces[activeColorSpace][0];
+            crc2.fill();
+            crc2.strokeStyle = ColorSpaces[activeColorSpace][4];
+            crc2.stroke();
+            crc2.restore();
+        }
+        crc2.restore();
+    }
+    function createFrontTowers(_cityWidth) {
+        crc2.save();
+        for (let i = 0; i < randomBetween(15, 50); i++) {
+            crc2.save();
+            crc2.translate(randomBetween((-_cityWidth / 2) + 10, (_cityWidth / 2) - 30), 0);
+            activeBuildingWidth = randomBetween(2, 8);
+            crc2.beginPath();
+            crc2.rect(activeBuildingWidth, 0, activeBuildingWidth * 2, Math.round(-(cityBubbleHeight / 3)));
+            crc2.closePath();
+            crc2.fillStyle = ColorSpaces[activeColorSpace][0];
+            crc2.fill();
+            crc2.strokeStyle = ColorSpaces[activeColorSpace][4];
+            crc2.stroke();
+            crc2.restore();
+        }
+        crc2.restore();
+    }
+    function createBubble(_cityWidth) {
+        crc2.beginPath();
+        crc2.ellipse(0, 0, cityBubbleHeight, _cityWidth / 2, -Math.PI * 0.5, -Math.PI * 0.5, Math.PI * 0.5);
+        crc2.closePath();
+        crc2.strokeStyle = ColorSpaces[activeColorSpace][2];
+        crc2.stroke();
+        crc2.fillStyle = ColorSpaces[activeColorSpace][1] + "55";
+        crc2.fill();
+    }
+    function createFoundation(_cityWidth) {
+        crc2.beginPath();
+        crc2.moveTo(-_cityWidth / 2, 0);
+        crc2.lineTo(_cityWidth / 2, 0);
+        crc2.lineTo((_cityWidth / 2) + 10, 20);
+        crc2.lineTo((-_cityWidth / 2) - 10, 20);
+        crc2.lineTo(-_cityWidth / 2, 0);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fillStyle = ColorSpaces[activeColorSpace][0];
+        crc2.fill();
+    }
+    function createCRT() {
+        for (let i = 0; i < crc2.canvas.height / 5; i++) {
+            crc2.beginPath();
+            crc2.moveTo(0, i * 5);
+            crc2.lineTo(crc2.canvas.width, i * 5);
+            crc2.strokeStyle = "#FFFFFF22";
+            crc2.lineWidth = 2;
             crc2.stroke();
         }
     }
