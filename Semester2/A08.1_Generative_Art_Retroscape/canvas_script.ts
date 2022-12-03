@@ -1,4 +1,4 @@
-namespace canvas_test
+namespace Retroscape
 {
     window.addEventListener("load", handleLoad);
     let canvas: HTMLCanvasElement;

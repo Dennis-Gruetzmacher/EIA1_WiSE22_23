@@ -20,8 +20,12 @@ var A06_ShoppingHelper;
         let response = await fetch(_url);
         console.log("Response", response);
         let newDatabaseObject = await response.json();
+        console.log(newDatabaseObject);
         A06_ShoppingHelper.globalShoppingList = newDatabaseObject.data;
+        let entries = Object.entries(A06_ShoppingHelper.globalShoppingList);
+        console.log("entries: " + entries);
         A06_ShoppingHelper.objectIds = Object.keys(newDatabaseObject.data);
+        console.log(A06_ShoppingHelper.objectIds);
         A06_ShoppingHelper.generateContent(A06_ShoppingHelper.globalShoppingList);
     }
     async function handleLoad() {

@@ -1,6 +1,6 @@
 "use strict";
-var canvas_test;
-(function (canvas_test) {
+var Retroscape;
+(function (Retroscape) {
     window.addEventListener("load", handleLoad);
     let canvas;
     let crc2;
@@ -273,5 +273,5 @@ var canvas_test;
     function randomBetween(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
-})(canvas_test || (canvas_test = {}));
+})(Retroscape || (Retroscape = {}));
 //# sourceMappingURL=canvas_script.js.map

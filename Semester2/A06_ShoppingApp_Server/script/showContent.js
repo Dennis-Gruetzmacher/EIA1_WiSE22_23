@@ -2,6 +2,7 @@
 var A06_ShoppingHelper;
 (function (A06_ShoppingHelper) {
     function generateContent(_shoppingList) {
+        console.log(_shoppingList.length);
         let listSpace = document.getElementById("list_space");
         for (let i = 0; i < _shoppingList.length; i++) {
             let newProductDiv = document.createElement("div");

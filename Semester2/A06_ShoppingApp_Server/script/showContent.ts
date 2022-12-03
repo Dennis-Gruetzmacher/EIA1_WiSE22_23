@@ -2,6 +2,7 @@ namespace A06_ShoppingHelper
 {
     export function generateContent(_shoppingList: IdObject[]): void
     {
+        console.log(_shoppingList.length);
         let listSpace: HTMLElement = document.getElementById("list_space");
         for( let i: number = 0; i < _shoppingList.length; i++)
         {

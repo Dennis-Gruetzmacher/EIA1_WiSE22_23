@@ -41,8 +41,12 @@ namespace A06_ShoppingHelper
         let response: Response = await fetch(_url);
         console.log("Response", response);
         let newDatabaseObject: ReturnedDatabaseObject = await response.json();
+        console.log(newDatabaseObject);
         globalShoppingList = newDatabaseObject.data;
+        let entries: string[] = Object.entries(globalShoppingList);
+        console.log("entries: " + entries);
         objectIds = Object.keys(newDatabaseObject.data);
+        console.log(objectIds);
         generateContent(globalShoppingList);
     }
     async function handleLoad(): Promise<void>
