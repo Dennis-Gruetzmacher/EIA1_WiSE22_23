@@ -1,0 +1,17 @@
+body 
+{
+    background-color: rgb(0, 194, 165);
+}
+
+#content 
+{
+    display: flex;
+    justify-content: center;
+}
+#overview 
+{
+    height: max-content;
+    width: 250px; 
+    margin: auto;
+    text-align: center;
+}
