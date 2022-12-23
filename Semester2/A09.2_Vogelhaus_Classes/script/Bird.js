@@ -183,7 +183,7 @@ var L09_2_Vogelhaus_classes;
                         this.rotation = this.rotation + 0.03;
                     }
                     else if (this.rotation >= 0) {
-                        if (L09_2_Vogelhaus_classes.randomBetween(1, 2) == 2) {
+                        if (L09_2_Vogelhaus_classes.randomBetween(1, 50) == 25) {
                             this.status = "Flying";
                             this.goal = "EntryBirdshouse";
                             this.xGoal = L09_2_Vogelhaus_classes.xEntryBirdshouse;
@@ -201,14 +201,14 @@ var L09_2_Vogelhaus_classes;
                     this.status = "GoingIntoBirdshouse";
                 }
                 else if (this.status == "GoingIntoBirdshouse" && this.goal == "InsideBirdshouse") {
-                    if (L09_2_Vogelhaus_classes.randomBetween(1, 2) == 2) {
+                    if (L09_2_Vogelhaus_classes.randomBetween(1, 200) == 100) {
                         this.xGoal = L09_2_Vogelhaus_classes.xEntryBirdshouse;
                         this.goal = "EntryBirdshouse";
                         this.status = "LeavingBirdshouse";
                     }
                 }
                 else if (this.status == "LeavingBirdshouse" && this.goal == "EntryBirdshouse") {
-                    if (L09_2_Vogelhaus_classes.randomBetween(0, 3) == 3) {
+                    if (L09_2_Vogelhaus_classes.randomBetween(0, 1) == 1) {
                         this.status = "Flying";
                         this.goal = "RandomGround";
                         this.xGoal = L09_2_Vogelhaus_classes.randomBetween(L09_2_Vogelhaus_classes.snowmanAreaX + 50, L09_2_Vogelhaus_classes.canvas.width);
@@ -224,14 +224,14 @@ var L09_2_Vogelhaus_classes;
                     }
                 }
                 else if (this.status == "Flying" && this.goal == "RandomSky") {
-                    if (L09_2_Vogelhaus_classes.randomBetween(0, 3) == 3) {
+                    if (L09_2_Vogelhaus_classes.randomBetween(0, 200) == 100) {
                         this.status = "Flying";
                         this.goal = "RandomGround";
                         this.xGoal = L09_2_Vogelhaus_classes.randomBetween(L09_2_Vogelhaus_classes.snowmanAreaX + 50, L09_2_Vogelhaus_classes.canvas.width);
                         this.zGoal = L09_2_Vogelhaus_classes.randomBetween(0, 6);
                         this.yGoal = L09_2_Vogelhaus_classes.canvas.height - (this.zGoal * 20);
                     }
-                    else if (L09_2_Vogelhaus_classes.randomBetween(0, 5) == 5) {
+                    else if (L09_2_Vogelhaus_classes.randomBetween(0, 200) == 100) {
                         this.status = "Flying";
                         this.goal = "EntryBirdshouse";
                         this.xGoal = L09_2_Vogelhaus_classes.xEntryBirdshouse;

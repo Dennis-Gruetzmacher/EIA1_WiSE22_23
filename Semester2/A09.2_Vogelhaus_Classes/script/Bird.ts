@@ -234,7 +234,7 @@ namespace L09_2_Vogelhaus_classes
                 else
                 if ( this.rotation >= 0)
                 {
-                    if ( randomBetween(1, 2) == 2 )
+                    if ( randomBetween(1, 50) == 25 )
                     {
                         this.status = "Flying";
                         this.goal = "EntryBirdshouse";
@@ -258,7 +258,7 @@ namespace L09_2_Vogelhaus_classes
             else
             if ( this.status == "GoingIntoBirdshouse" && this.goal == "InsideBirdshouse")
             {
-                if(randomBetween(1,2) == 2)
+                if(randomBetween(1, 200) == 100)
                 {
                     this.xGoal = xEntryBirdshouse;
                     this.goal = "EntryBirdshouse";
@@ -268,7 +268,7 @@ namespace L09_2_Vogelhaus_classes
             else
             if ( this.status == "LeavingBirdshouse" && this.goal == "EntryBirdshouse")
             {
-                if (randomBetween(0, 3) == 3)
+                if (randomBetween(0, 1) == 1)
                 {
                     this.status = "Flying";
                     this.goal = "RandomGround";
@@ -289,7 +289,7 @@ namespace L09_2_Vogelhaus_classes
             else
             if ( this.status == "Flying" && this.goal == "RandomSky")
             {
-                if (randomBetween(0, 3) == 3)
+                if (randomBetween(0, 200) == 100)
                 {
                     this.status = "Flying";
                     this.goal = "RandomGround";
@@ -298,7 +298,7 @@ namespace L09_2_Vogelhaus_classes
                     this.yGoal = canvas.height - (this.zGoal * 20 );
                 }
                 else
-                if (randomBetween(0, 5) == 5)
+                if (randomBetween(0, 200) == 100)
                 {
                     this.status = "Flying";
                     this.goal = "EntryBirdshouse";
