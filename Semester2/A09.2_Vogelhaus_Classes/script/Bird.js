@@ -71,7 +71,7 @@ var L09_2_Vogelhaus_classes;
             if (this.status == "Flying") {
                 if (this.wingFlapping == true) {
                     L09_2_Vogelhaus_classes.crc2.beginPath();
-                    //crc2.fillStyle = this.colorHead;
+                    L09_2_Vogelhaus_classes.crc2.fillStyle = this.colorHead;
                     L09_2_Vogelhaus_classes.crc2.scale(1, 5);
                     L09_2_Vogelhaus_classes.crc2.arc(0, 0, 5, Math.PI, Math.PI * 2);
                     L09_2_Vogelhaus_classes.crc2.closePath();

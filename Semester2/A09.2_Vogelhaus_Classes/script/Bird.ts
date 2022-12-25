@@ -80,7 +80,7 @@ namespace L09_2_Vogelhaus_classes
             if (this.wingFlapping == true)
             {
                 crc2.beginPath();
-                //crc2.fillStyle = this.colorHead;
+                crc2.fillStyle = this.colorHead;
                 crc2.scale(1, 5);
                 crc2.arc(0, 0, 5, Math.PI, Math.PI * 2);
                 crc2.closePath();
